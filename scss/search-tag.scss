@@ -7,15 +7,13 @@
   border-radius: 8px;
   font-weight: bold;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   flex-shrink: 1;
 
   .search-tag__input {
     background: transparent;
     border-bottom: 1px solid white;
     height: 100%;
-    width: 100px;
+    width: 120px;
     padding-right: 10px;
     margin-right: 10px;
     font-weight: bold;
@@ -30,6 +28,12 @@
 
   .prefix {
     font-weight: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .value {
+
   }
 
   .suffix {

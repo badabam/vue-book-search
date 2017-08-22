@@ -1,11 +1,11 @@
 Vue.component('app', {
   template: `
   <div>
-    <search-bar></search-bar>
+    <search-bar @submit="createSearchTag" @focusMainInput="focusTarget"></search-bar>
     <section class="tag-buttons">
       <tag-button
         v-for="data in tagButtons"
-        @click="onTagButtonClick"
+        @click="createSearchTag"
         v-bind:initialData="data"
         v-bind:key="data.title" />
     </section>
@@ -13,16 +13,18 @@ Vue.component('app', {
   `,
 
   methods: {
-    onTagButtonClick: function(data) {
-      this.createSearchTag(data);
-    },
-
     createSearchTag: function(data) {
       searchTags.push({
+        value: data.value,
         type: data.title,
         valueType: data.type,
         placeholder: data.placeholder
       });
+    },
+
+    focusTarget: function(target) {
+      console.log('focusTarget', target);
+      target && target.focus();
     }
   },
 

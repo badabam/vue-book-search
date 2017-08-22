@@ -1,9 +1,9 @@
 Vue.component('search-tag', {
   template: `
-    <li class="search-tag">
+    <div class="search-tag">
       <span class="prefix">{{type}}: </span>
-      <span @click="click" v-if="!editing">{{price(value, valueType)}}</span>
-      <span v-if="!editing" class="suffix" @click="remove">&times;</span>
+      <span class="value" @click="click" v-if="!editing">{{price(value, valueType)}}</span>
+      <span class="suffix" v-if="!editing" @click="remove">&times;</span>
       <input
         class="search-tag__input"
         type="text"
@@ -17,7 +17,7 @@ Vue.component('search-tag', {
         @keyup.enter="submit"
         @keyup.esc="destroy"
         >
-    </li>
+    </div>
   `,
   props: ['data', 'index'],
   data: function() {
@@ -39,6 +39,7 @@ Vue.component('search-tag', {
       if (event.target.value) {
         this.value = event.target.value;
         this.editing = false;
+        this.$emit('focusMainInput');
       }
     },
     destroy: function (event) {

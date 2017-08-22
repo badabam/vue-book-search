@@ -2,7 +2,8 @@ var tagButtons = [
   {
     title: 'Author',
     type: 'text',
-    placeholder: 'Tolkien'
+    placeholder: 'Tolkien',
+    multi: true
   },
   {
     title: 'Release date',
@@ -16,28 +17,31 @@ var tagButtons = [
   },
   {
     title: 'Price from',
-    type: 'number',
+    type: 'price',
     placeholder: '9.99'
   },
   {
     title: 'Price to',
-    type: 'number',
+    type: 'price',
     placeholder: '99.90'
   },
   {
     title: 'Keyword',
     type: 'text',
-    placeholder: 'kochen'
+    placeholder: 'kochen',
+    multi: true
   },
   {
     title: 'Language',
     type: 'text',
-    placeholder: 'englisch'
+    placeholder: 'englisch',
+    multi: true
   },
   {
     title: 'Media',
     type: 'text',
-    placeholder: 'DVD, CD'
+    placeholder: 'DVD, CD',
+    multi: true
   },
   {
     title: 'ISBN',
