@@ -1,20 +1,20 @@
 {
   "name": "search-prototype",
   "version": "0.0.1",
-  "description": "",
   "main": "index.html",
-  "dependencies": {
-    "bootstrap": "4.0.0-beta",
-    "jshint": "2.9.5",
-    "node-sass": "4.5.3",
-    "vuejs": "1.0.29"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run styles:build && npm run styles:watch",
     "styles:watch": "node-sass -w -o css scss/styles.scss",
     "styles:build": "node-sass -o css scss/styles.scss"
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0-beta",
+    "vuejs": "1.0.29"
+  },
+  "devDependencies": {
+    "jshint": "2.9.5",
+    "node-sass": "4.5.3"
   },
   "author": "Jeremias Erbs <jerry@badabam.de> (http://www.badabam.de/)",
   "license": "UNLICENSED"

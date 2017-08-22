@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: cornflowerblue;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+body {
+  height: 100vh;
+  background: #fefefe;
+  box-shadow: 1px 1px 6px rgba(black, 0.2);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  height: 40px;
+  flex: 1;
+  border: none;
+  padding: 0 10px;
+  &:focus {
+    outline: none;
+  }
+}
+
+button[type="submit"] {
+  border: none;
+  background: coral;
+  color: white;
+  padding: 0 30px;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  font-size: 18px;
+}

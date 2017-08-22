@@ -1,0 +1,14 @@
+.tag-button {
+  background: #ddd;
+  padding: 2px 12px;
+  border-radius: 12px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background: coral;
+    color: white;
+  }
+}
