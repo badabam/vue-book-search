@@ -1,43 +1,50 @@
 var tagButtons = [
   {
     title: 'Author',
-    type: 'number'
+    type: 'text',
+    placeholder: 'Tolkien'
   },
   {
     title: 'Release date',
-    type: 'date'
+    type: 'date',
+    placeholder: '04.2017'
   },
   {
     title: 'Publisher',
-    type: 'text'
+    type: 'text',
+    placeholder: 'Bastei Lübbe AG'
   },
   {
     title: 'Price from',
-    type: 'number'
+    type: 'number',
+    placeholder: '9.99'
   },
   {
     title: 'Price to',
-    type: 'number'
+    type: 'number',
+    placeholder: '99.90'
   },
   {
     title: 'Keyword',
-    type: 'text'
+    type: 'text',
+    placeholder: 'kochen'
   },
   {
     title: 'Language',
-    type: 'text'
+    type: 'text',
+    placeholder: 'englisch'
   },
   {
     title: 'Media',
-    type: 'text'
+    type: 'text',
+    placeholder: 'DVD, CD'
   },
   {
     title: 'ISBN',
-    type: 'number'
+    type: 'number',
+    placeholder: '97x-x-xxx-xxxxx-x'
   },
 ];
 
 let searchTags = [
-  {type: "Author", value: "Tolkien"},
-  {type: "Publisher", value: "Allen & Unwin"},
 ];

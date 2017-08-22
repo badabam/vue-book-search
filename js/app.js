@@ -20,7 +20,8 @@ Vue.component('app', {
     createSearchTag: function(data) {
       searchTags.push({
         type: data.title,
-        dataType: data.type
+        valueType: data.type,
+        placeholder: data.placeholder
       });
     }
   },

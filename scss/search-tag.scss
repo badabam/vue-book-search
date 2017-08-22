@@ -20,6 +20,12 @@
     margin-right: 10px;
     font-weight: bold;
     color: white;
+
+    &::placeholder {
+      color: white;
+      font-weight: 200;
+      opacity: 0.6;
+    }
   }
 
   .prefix {
