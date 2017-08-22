@@ -1,4 +1,4 @@
-var tags = [
+var tagButtons = [
   'Author',
   'Release date',
   'Publisher',
@@ -13,7 +13,6 @@ var tags = [
 let searchTags = [
   {type: "Author", value: "Tolkien"},
   {type: "Publisher", value: "Allen & Unwin"},
-  {type: "Price from"},
 ];
 
 Vue.component('app', {
@@ -21,19 +20,29 @@ Vue.component('app', {
   <div>
     <search-bar></search-bar>
     <section class="advanced">
-    <tag
-    v-for="tag in tags"
-    v-bind:name="tag"
-    v-bind:key="tag" />
+    <tag-button
+      v-for="name in tagButtons"
+      @click="onTagButtonClick"
+      v-bind:name="name"
+      v-bind:key="name" />
     </section>
   </div>
   `,
   methods: {
+    onTagButtonClick: function(event) {
+      this.createSearchTag(event);
+    },
+    createSearchTag: function(type, text) {
+      searchTags.push({
+        type,
+        text
+      });
+    }
   },
 
   data: () => {
     return {
-      tags: tags
+      tagButtons
     }
   }
 });
@@ -43,9 +52,11 @@ Vue.component('search-bar', {
     <section class="simple">
       <input type="text" name="q">
       <ul class="tags">
-        <search-tag
+        <li
+        is="search-tag"
         v-for="(tag, index) in searchTags"
         v-bind:data="tag"
+        v-bind:index="index"
         key="tag.type"
         @close="close(index)"
         />
@@ -60,6 +71,7 @@ Vue.component('search-bar', {
     },
     methods: {
       close: function(index) {
+        console.log('close', index);
         searchTags.splice(index, 1);
       }
     }
@@ -68,27 +80,59 @@ Vue.component('search-bar', {
 Vue.component('search-tag', {
   template: `
     <li>
-      <span class="prefix">{{data.type}}</span>
-      {{data.value}}
-      <span class="suffix" @click="close">&times;</span>
+      <span class="prefix">{{type}}: </span>
+      {{value}}
+      <span v-if="value" class="suffix" @click="close">&times;</span>
+      <input
+        v-if="!value"
+        type="text"
+        ref="input"
+        @blur="blur"
+        @keyup.delete="destroy"
+        @keyup.enter="submit">
     </li>
   `,
-  props: ['data'],
-  data: () => {
-    return {};
+  props: ['data', 'index'],
+  data: function() {
+    return {
+      type: this.data.type,
+      value: this.data.value
+    };
   },
   methods: {
     close: function() {
       this.$emit('close');
+    },
+    submit: function(event) {
+      if (event.target.value) {
+        this.value = event.target.value;
+      }
+    },
+    destroy: function () {
+      if(!this.$refs.input.value) {
+        searchTags.splice(this.index, 1);
+      }
+    },
+    blur: function() {
+      console.log('blur');
+      this.destroy();
     }
+  },
+  mounted: function() {
+    this.$refs.input && this.$refs.input.focus();
   }
 });
 
-Vue.component('tag', {
+Vue.component('tag-button', {
   template: `
-  <div>{{name}}</div>
+  <div @click="onClick()">{{name}}</div>
   `,
-  props: ['name']
+  props: ['name'],
+  methods: {
+    onClick: function() {
+      this.$emit('click', this.name);
+    }
+  }
 });
 
 new Vue({
