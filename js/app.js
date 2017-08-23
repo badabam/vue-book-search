@@ -4,7 +4,7 @@ Vue.component('app', {
     <search-bar
     @submit="createSearchTag"
     @focusMainInput="focusTarget"
-    @close="closeSearchTag"
+    @destroy="destroySearchTag"
     v-bind:searchTags="searchTags"
     ></search-bar>
     <section class="tag-buttons">
@@ -25,18 +25,15 @@ Vue.component('app', {
         placeholder: data.placeholder,
         id: this.nextSearchTodoId++
       };
-      this.$set(this.searchTags, newTag.id, newTag);
+      Vue.set(this.searchTags, newTag.id, newTag);
       console.log('createSearchTag', data, this.searchTags);
     },
 
-    closeSearchTag: function(id) {
-      console.log('delete', id);
-      // this.searchTags = this.searchTags.filter(x => x.id !== id);
-      this.$delete(this.searchTags, id);
+    destroySearchTag: function(id) {
+      Vue.delete(this.searchTags, id);
     },
 
     focusTarget: function(target) {
-      console.log('focusTarget', target);
       target && target.focus();
     }
   },

@@ -7,10 +7,14 @@ Vue.component('search-bar', {
         v-for="(data, key) in searchTags"
         v-bind:data="data"
         v-bind:key="key"
-        @close="close"
+        @destroy="destroy"
         @focusMainInput="focusMainInput"
         />
-        <div ref="fulltextInput" is="fulltext-input" @submit="onCreateSearchTag" />
+        <fulltext-input
+          ref="fulltextInput"
+          @submit="onCreateSearchTag"
+          @destroy="destroyLast"
+        />
       </div>
       <button type="submit">Search</button>
     </section>
@@ -20,12 +24,19 @@ Vue.component('search-bar', {
       onCreateSearchTag: function(data) {
         this.$emit('submit', data);
       },
+
       focusMainInput: function() {
         const target = this.$refs.fulltextInput.$el;
         this.$emit('focusMainInput', target);
       },
-      close: function(id) {
-        this.$emit('close', id);
+
+      destroy: function(id) {
+        this.$emit('destroy', id);
+      },
+
+      destroyLast: function() {
+        const lastItemId = Object.keys(this.searchTags).slice(-1)[0];
+        this.$emit('destroy', lastItemId);
       }
     }
 });
