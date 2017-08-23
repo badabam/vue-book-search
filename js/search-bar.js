@@ -12,27 +12,28 @@ Vue.component('search-bar', {
         />
         <fulltext-input
           ref="fulltextInput"
+          v-bind:inputText="inputText"
+          @update="updateInput"
           @submit="onCreateSearchTag"
           @destroy="destroyLast"
-          @update="inputUpdate"
         />
       </div>
-      <button type="submit">Search</button>
+      <button class="search-bar__button" type="submit">Search</button>
     </section>
     `,
-    props: ['searchTags'],
+    props: ['searchTags', 'inputText'],
     methods: {
       onCreateSearchTag: function(data) {
         this.$emit('submit', data);
       },
 
-      inputUpdate: function(value) {
-        this.$emit('inputUpdate', value);
-      },
-
       focusMainInput: function() {
         const target = this.$refs.fulltextInput.$el;
         this.$emit('focusMainInput', target);
+      },
+
+      updateInput: function(value) {
+        this.$emit('update', value);
       },
 
       destroy: function(id) {

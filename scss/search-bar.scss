@@ -5,3 +5,28 @@
   border-radius: 4px;
   position: relative;
 }
+
+.search-bar__button {
+  border: none;
+  background: coral;
+  color: white;
+  padding: 0 30px;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    background: darken(coral, 5%);
+  }
+
+  &:active {
+    transition: background 0.1s ease;
+    background: lighten(coral, 4%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

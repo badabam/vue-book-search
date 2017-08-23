@@ -6,14 +6,15 @@ Vue.component('fulltext-input', {
       @keyup.enter="submit"
       @keydown="saveText"
       @keyup.delete="destroy"
-      @keyup="keyup"
-      v-model="inputText"
+      @input="updateValue"
+      v-bind:value="currentText"
     >
     `,
+    props: ['inputText'],
     data: () => {
       return {
-        inputText: '',
-        savedText: null
+        savedText: null,
+        currentText: this.inputText
       };
     },
 
@@ -27,11 +28,11 @@ Vue.component('fulltext-input', {
           value: event.target.value,
           title: 'Text search'
         });
-        this.inputText = null;
+        this.currentText = '';
       },
 
-      keyup: function() {
-        this.$emit('update', this.inputText);
+      updateValue: function(event) {
+        this.$emit('update', event.target.value);
       },
 
       saveText: function(event) {

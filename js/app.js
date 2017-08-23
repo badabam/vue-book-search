@@ -5,14 +5,17 @@ Vue.component('app', {
       @submit="createSearchTag"
       @focusMainInput="focusTarget"
       @destroy="destroySearchTag"
-      @inputUpdate="filterTags"
+      @update="updateInput"
+      v-bind:inputText="currentInput"
       v-bind:searchTags="searchTags"
     />
     <section class="tag-buttons">
       <tag-button
-        v-for="data in currentTags"
+        v-for="(data, index) in currentTags"
         @click="createSearchTag"
         v-bind:initialData="data"
+        v-bind:selected="index === selectedTag"
+        v-bind:highlight="currentInput"
         v-bind:key="data.title" />
     </section>
   </div>
@@ -22,8 +25,10 @@ Vue.component('app', {
     return {
       currentTags: tagButtons,
       tagButtons: tagButtons,
+      currentInput: '',
       searchTags: {},
-      nextSearchTodoId: 0
+      nextSearchTodoId: 0,
+      selectedTag: null
     }
   },
 
@@ -41,7 +46,12 @@ Vue.component('app', {
     },
 
     filterTags: function(value) {
-      this.currentTags = this.tagButtons.filter(tag => tag.title.indexOf(value) !== -1);
+      this.currentTags = this.tagButtons.filter(tag => tag.title.indexOf(value) === 0);
+    },
+
+    updateInput: function(value) {
+      this.filterTags(value);
+      this.currentInput = value;
     },
 
     destroySearchTag: function(id) {

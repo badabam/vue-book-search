@@ -2,13 +2,25 @@
   background: #ddd;
   padding: 2px 12px;
   border-radius: 12px;
+  border: 2px solid transparent;
   margin-right: 20px;
   margin-bottom: 10px;
   cursor: pointer;
   white-space: nowrap;
+  transition: all 0.3s ease;
 
   &:hover {
     background: coral;
+    box-shadow: 0 2px 4px rgba(black, 0.3);
     color: white;
   }
+
+  &:active {
+    background: lighten(coral, 5%);
+  }
+
+  &.selected {
+    border-color: coral;
+  }
+
 }
