@@ -1,7 +1,12 @@
 Vue.component('app', {
   template: `
   <div>
-    <search-bar @submit="createSearchTag" @focusMainInput="focusTarget"></search-bar>
+    <search-bar
+    @submit="createSearchTag"
+    @focusMainInput="focusTarget"
+    @close="closeSearchTag"
+    v-bind:searchTags="searchTags"
+    ></search-bar>
     <section class="tag-buttons">
       <tag-button
         v-for="data in tagButtons"
@@ -11,15 +16,23 @@ Vue.component('app', {
     </section>
   </div>
   `,
-
   methods: {
     createSearchTag: function(data) {
-      searchTags.push({
+      const newTag = {
         value: data.value,
         type: data.title,
         valueType: data.type,
-        placeholder: data.placeholder
-      });
+        placeholder: data.placeholder,
+        id: this.nextSearchTodoId++
+      };
+      this.$set(this.searchTags, newTag.id, newTag);
+      console.log('createSearchTag', data, this.searchTags);
+    },
+
+    closeSearchTag: function(id) {
+      console.log('delete', id);
+      // this.searchTags = this.searchTags.filter(x => x.id !== id);
+      this.$delete(this.searchTags, id);
     },
 
     focusTarget: function(target) {
@@ -28,9 +41,11 @@ Vue.component('app', {
     }
   },
 
-  data: () => {
+  data: function() {
     return {
-      tagButtons
+      tagButtons,
+      searchTags: {},
+      nextSearchTodoId: 0
     }
   }
 });

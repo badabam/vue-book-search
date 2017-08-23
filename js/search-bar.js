@@ -4,11 +4,10 @@ Vue.component('search-bar', {
       <input class="search-bar__input" type="text" name="q">
       <div class="search-tags">
         <search-tag
-        v-for="(tag, index) in searchTags"
-        v-bind:data="tag"
-        v-bind:index="index"
-        key="tag.type"
-        @close="close(index)"
+        v-for="(data, key) in searchTags"
+        v-bind:data="data"
+        v-bind:key="key"
+        @close="close"
         @focusMainInput="focusMainInput"
         />
         <div ref="fulltextInput" is="fulltext-input" @submit="onCreateSearchTag" />
@@ -16,11 +15,7 @@ Vue.component('search-bar', {
       <button type="submit">Search</button>
     </section>
     `,
-    data: () => {
-      return {
-        searchTags: searchTags
-      };
-    },
+    props: ['searchTags'],
     methods: {
       onCreateSearchTag: function(data) {
         this.$emit('submit', data);
@@ -29,8 +24,8 @@ Vue.component('search-bar', {
         const target = this.$refs.fulltextInput.$el;
         this.$emit('focusMainInput', target);
       },
-      close: function(index) {
-        searchTags.splice(index, 1);
+      close: function(id) {
+        this.$emit('close', id);
       }
     }
 });

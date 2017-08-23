@@ -49,6 +49,3 @@ var tagButtons = [
     placeholder: '97x-x-xxx-xxxxx-x'
   },
 ];
-
-let searchTags = [
-];
