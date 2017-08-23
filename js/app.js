@@ -2,20 +2,31 @@ Vue.component('app', {
   template: `
   <div>
     <search-bar
-    @submit="createSearchTag"
-    @focusMainInput="focusTarget"
-    @destroy="destroySearchTag"
-    v-bind:searchTags="searchTags"
-    ></search-bar>
+      @submit="createSearchTag"
+      @focusMainInput="focusTarget"
+      @destroy="destroySearchTag"
+      @inputUpdate="filterTags"
+      v-bind:searchTags="searchTags"
+    />
     <section class="tag-buttons">
       <tag-button
-        v-for="data in tagButtons"
+        v-for="data in currentTags"
         @click="createSearchTag"
         v-bind:initialData="data"
         v-bind:key="data.title" />
     </section>
   </div>
   `,
+
+  data: function() {
+    return {
+      currentTags: tagButtons,
+      tagButtons: tagButtons,
+      searchTags: {},
+      nextSearchTodoId: 0
+    }
+  },
+
   methods: {
     createSearchTag: function(data) {
       const newTag = {
@@ -29,20 +40,16 @@ Vue.component('app', {
       console.log('createSearchTag', data, this.searchTags);
     },
 
+    filterTags: function(value) {
+      this.currentTags = this.tagButtons.filter(tag => tag.title.indexOf(value) !== -1);
+    },
+
     destroySearchTag: function(id) {
       Vue.delete(this.searchTags, id);
     },
 
     focusTarget: function(target) {
       target && target.focus();
-    }
-  },
-
-  data: function() {
-    return {
-      tagButtons,
-      searchTags: {},
-      nextSearchTodoId: 0
     }
   }
 });

@@ -1,10 +1,12 @@
 Vue.component('fulltext-input', {
   template: `
     <input
+      ref="input"
       type="text"
       @keyup.enter="submit"
       @keydown="saveText"
       @keyup.delete="destroy"
+      @keyup="keyup"
       v-model="inputText"
     >
     `,
@@ -14,6 +16,11 @@ Vue.component('fulltext-input', {
         savedText: null
       };
     },
+
+    mounted: function() {
+      this.$refs.input && this.$refs.input.focus();
+    },
+
     methods: {
       submit: function(event) {
         this.$emit('submit', {
@@ -21,6 +28,10 @@ Vue.component('fulltext-input', {
           title: 'Text search'
         });
         this.inputText = null;
+      },
+
+      keyup: function() {
+        this.$emit('update', this.inputText);
       },
 
       saveText: function(event) {

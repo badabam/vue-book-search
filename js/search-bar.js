@@ -4,16 +4,17 @@ Vue.component('search-bar', {
       <input class="search-bar__input" type="text" name="q">
       <div class="search-tags">
         <search-tag
-        v-for="(data, key) in searchTags"
-        v-bind:data="data"
-        v-bind:key="key"
-        @destroy="destroy"
-        @focusMainInput="focusMainInput"
+          v-for="(data, key) in searchTags"
+          v-bind:data="data"
+          v-bind:key="key"
+          @destroy="destroy"
+          @focusMainInput="focusMainInput"
         />
         <fulltext-input
           ref="fulltextInput"
           @submit="onCreateSearchTag"
           @destroy="destroyLast"
+          @update="inputUpdate"
         />
       </div>
       <button type="submit">Search</button>
@@ -23,6 +24,10 @@ Vue.component('search-bar', {
     methods: {
       onCreateSearchTag: function(data) {
         this.$emit('submit', data);
+      },
+
+      inputUpdate: function(value) {
+        this.$emit('inputUpdate', value);
       },
 
       focusMainInput: function() {
