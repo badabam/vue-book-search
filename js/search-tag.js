@@ -1,6 +1,6 @@
 Vue.component('search-tag', {
   template: `
-    <div class="search-tag">
+    <div class="search-tag" v-bind:class="{error: hasError}">
       <span class="prefix">{{type}}: </span>
       <span class="value" @click="click" v-if="!editing">{{price(value, valueType)}}</span>
       <span class="suffix" v-if="!editing" @click="destroy">&times;</span>
@@ -31,9 +31,17 @@ Vue.component('search-tag', {
       id: this.data.id
     };
   },
+  computed: {
+    hasError: function() {
+      const result = this.valueType === 'price' && this.value && !/\d+/.test(this.value);
+      console.log('hasError', result);
+      return result;
+    }
+  },
   methods: {
     price: price,
     submit: function(event) {
+      if (this.hasError) { return; } // early out
       if (event.target.value) {
         this.value = event.target.value;
         this.editing = false;
