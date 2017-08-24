@@ -20,7 +20,7 @@ Vue.component('search-tag', {
     </div>
   `,
   props: ['data'],
-  data: function() {
+  data() {
     return {
       type: this.data.type,
       value: this.data.value,
@@ -32,7 +32,7 @@ Vue.component('search-tag', {
     };
   },
   computed: {
-    hasError: function() {
+    hasError() {
       const result = this.valueType === 'price' && this.value && !/\d+/.test(this.value);
       console.log('hasError', result);
       return result;

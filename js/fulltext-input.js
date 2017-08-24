@@ -11,13 +11,13 @@ Vue.component('fulltext-input', {
     >
     `,
     props: ['inputText'],
-    data: () => {
+    data() {
       return {
         savedText: null,
       };
     },
 
-    mounted: function() {
+    mounted() {
       this.focus();
     },
 

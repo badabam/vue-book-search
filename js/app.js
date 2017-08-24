@@ -21,7 +21,7 @@ Vue.component('app', {
   </div>
   `,
 
-  data: function() {
+  data() {
     return {
       currentTags: tagButtons,
       tagButtons: tagButtons,
@@ -33,7 +33,7 @@ Vue.component('app', {
   },
 
   methods: {
-    createSearchTag: function(data) {
+    createSearchTag(data) {
       const newTag = {
         value: data.value,
         type: data.title,

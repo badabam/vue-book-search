@@ -3,7 +3,7 @@ Vue.component('tag-button', {
   <div class="tag-button" v-bind:class="{selected: selected}" @click="onClick" v-html="htmlText"></div>
   `,
   props: ['initialData', 'highlight', 'selected'],
-  data: function() {
+  data() {
     return {
       vm: Object.assign({}, this.initialData)
     };
