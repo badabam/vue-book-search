@@ -16,6 +16,7 @@ Vue.component('search-bar', {
           @update="updateInput"
           @submit="onCreateSearchTag"
           @destroy="destroyLast"
+          @move="move"
         />
       </div>
       <button class="search-bar__button" type="submit">Search</button>
@@ -30,6 +31,10 @@ Vue.component('search-bar', {
       focusMainInput() {
         const target = this.$refs.fulltextInput.$el;
         this.$emit('focusMainInput', target);
+      },
+
+      move(step) {
+        this.$emit('move', step);
       },
 
       updateInput(value) {

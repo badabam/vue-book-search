@@ -1,9 +1,9 @@
 Vue.component('search-tag', {
   template: `
     <div class="search-tag" v-bind:class="{error: hasError, editing: editing}">
-      <span class="prefix">{{type}}: </span>
-      <span class="value" @click="click" v-if="!editing">{{price(value, valueType)}}</span>
-      <span class="suffix" v-if="!editing" @click="destroy">&times;</span>
+      <span @click="click" class="prefix">{{type}}: </span>
+      <span @click="click" class="value" v-if="!editing">{{price(value, valueType)}}</span>
+      <span @click="destroy(true)" class="suffix" v-if="!editing">&times;</span>
       <input
         class="search-tag__input"
         type="text"
@@ -13,7 +13,7 @@ Vue.component('search-tag', {
         v-bind:placeholder="placeholder"
         @blur="blur"
         @keydown="saveInterimKey"
-        @keyup.delete="destroy"
+        @keyup.delete="destroy()"
         @keyup.enter="submit"
         @keyup.esc="destroy"
         >
@@ -50,8 +50,8 @@ Vue.component('search-tag', {
         this.destroy();
       }
     },
-    destroy (event) {
-      if(!this.value && !this.interimValue) {
+    destroy(force) {
+      if(!this.value && !this.interimValue || force) {
         this.$emit('destroy', this.id);
       }
     },

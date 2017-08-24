@@ -6,6 +6,7 @@ Vue.component('app', {
       @focusMainInput="focusTarget"
       @destroy="destroySearchTag"
       @update="updateInput"
+      @move="moveSelection"
       v-bind:inputText="currentInput"
       v-bind:searchTags="searchTags"
     />
@@ -66,6 +67,10 @@ Vue.component('app', {
     updateInput(value) {
       this.sortTags(value);
       this.currentInput = value;
+    },
+
+    moveSelection(step) {
+      console.log('moveSelection', step);
     },
 
     destroySearchTag(id) {
