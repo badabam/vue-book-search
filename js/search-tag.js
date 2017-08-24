@@ -46,6 +46,8 @@ Vue.component('search-tag', {
         this.value = event.target.value;
         this.editing = false;
         this.$emit('focusMainInput');
+      } else {
+        this.destroy();
       }
     },
     destroy (event) {
