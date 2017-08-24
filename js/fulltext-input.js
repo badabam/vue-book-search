@@ -4,45 +4,48 @@ Vue.component('fulltext-input', {
       ref="input"
       type="text"
       @keyup.enter="submit"
-      @keydown="saveText"
+      @keydown="saveText($event.target.value)"
       @keyup.delete="destroy"
-      @input="updateValue"
-      v-bind:value="currentText"
+      @input="updateValue($event.target.value)"
+      v-bind:value="inputText"
     >
     `,
     props: ['inputText'],
     data: () => {
       return {
         savedText: null,
-        currentText: this.inputText
       };
     },
 
     mounted: function() {
-      this.$refs.input && this.$refs.input.focus();
+      this.focus();
     },
 
     methods: {
-      submit: function(event) {
+      submit(event) {
         this.$emit('submit', {
           value: event.target.value,
           title: 'Text search'
         });
-        this.currentText = '';
       },
 
-      updateValue: function(event) {
-        this.$emit('update', event.target.value);
+      updateValue(value) {
+        this.$emit('update', value);
       },
 
-      saveText: function(event) {
-        this.savedText = event.target.value;
+      saveText(value) {
+        this.savedText = value;
       },
 
-      destroy: function(event) {
+      focus() {
+        this.$refs.input && this.$refs.input.focus();
+      },
+
+      destroy() {
         if (!this.savedText) {
           this.$emit('destroy');
         }
+
       }
     }
 });

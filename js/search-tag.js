@@ -40,7 +40,7 @@ Vue.component('search-tag', {
   },
   methods: {
     price: price,
-    submit: function(event) {
+    submit(event) {
       if (this.hasError) { return; } // early out
       if (event.target.value) {
         this.value = event.target.value;
@@ -48,20 +48,20 @@ Vue.component('search-tag', {
         this.$emit('focusMainInput');
       }
     },
-    destroy: function (event) {
+    destroy (event) {
       if(!this.value && !this.interimValue) {
         this.$emit('destroy', this.id);
       }
     },
-    saveInterimKey: function(event) {
+    saveInterimKey(event) {
       this.interimValue = event.target.value;
     },
-    blur: function(event) {
+    blur(event) {
       this.value = event.target.value;
       this.editing = false;
       this.destroy();
     },
-    click: function(event) {
+    click(event) {
       if (this.value) {
         this.editing = true;
         const value = this.value;
@@ -71,7 +71,8 @@ Vue.component('search-tag', {
       }
     }
   },
-  mounted: function() {
+  mounted() {
     this.$refs.input && this.$refs.input.focus();
+    this.$emit('created');
   }
 });

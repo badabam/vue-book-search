@@ -9,6 +9,7 @@ Vue.component('search-bar', {
           v-bind:key="key"
           @destroy="destroy"
           @focusMainInput="focusMainInput"
+          @created="updateInput('')"
         />
         <fulltext-input
           ref="fulltextInput"
@@ -23,24 +24,25 @@ Vue.component('search-bar', {
     `,
     props: ['searchTags', 'inputText'],
     methods: {
-      onCreateSearchTag: function(data) {
+      onCreateSearchTag(data) {
         this.$emit('submit', data);
       },
 
-      focusMainInput: function() {
+      focusMainInput() {
         const target = this.$refs.fulltextInput.$el;
         this.$emit('focusMainInput', target);
       },
 
-      updateInput: function(value) {
+      updateInput(value) {
         this.$emit('update', value);
       },
 
-      destroy: function(id) {
+      destroy(id) {
         this.$emit('destroy', id);
+        this.$refs.fulltextInput.focus();
       },
 
-      destroyLast: function() {
+      destroyLast() {
         const lastItemId = Object.keys(this.searchTags).slice(-1)[0];
         this.$emit('destroy', lastItemId);
       }

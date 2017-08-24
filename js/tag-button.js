@@ -9,7 +9,7 @@ Vue.component('tag-button', {
     };
   },
   computed: {
-    htmlText: function () {
+    htmlText() {
       if (this.highlight) {
         const rest = this.vm.title.split(this.highlight)[1];
         return `<strong>${this.highlight}</strong>${rest}`;
@@ -19,7 +19,7 @@ Vue.component('tag-button', {
     }
   },
   methods: {
-    onClick: function() {
+    onClick() {
       this.$emit('click', this.vm);
     }
   }

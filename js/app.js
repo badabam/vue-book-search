@@ -29,7 +29,7 @@ Vue.component('app', {
       searchTags: {},
       nextSearchTodoId: 0,
       selectedTag: null
-    }
+    };
   },
 
   methods: {
@@ -42,23 +42,22 @@ Vue.component('app', {
         id: this.nextSearchTodoId++
       };
       Vue.set(this.searchTags, newTag.id, newTag);
-      console.log('createSearchTag', data, this.searchTags);
     },
 
-    filterTags: function(value) {
+    filterTags(value) {
       this.currentTags = this.tagButtons.filter(tag => tag.title.indexOf(value) === 0);
     },
 
-    updateInput: function(value) {
+    updateInput(value) {
       this.filterTags(value);
       this.currentInput = value;
     },
 
-    destroySearchTag: function(id) {
+    destroySearchTag(id) {
       Vue.delete(this.searchTags, id);
     },
 
-    focusTarget: function(target) {
+    focusTarget(target) {
       target && target.focus();
     }
   }
