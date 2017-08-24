@@ -1,6 +1,7 @@
 Vue.component('fulltext-input', {
   template: `
     <input
+      class="fulltext-input"
       ref="input"
       type="text"
       @keyup.enter="submit"

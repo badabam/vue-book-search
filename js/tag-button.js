@@ -1,6 +1,11 @@
 Vue.component('tag-button', {
   template: `
-  <div class="tag-button" v-bind:class="{selected: selected, highlight: hasHighlight, low: !hasHighlight }" @click="onClick" v-html="htmlText"></div>
+  <div
+    class="tag-button"
+    v-bind:class="{selected: selected, highlight: hasHighlight, low: !hasHighlight }"
+    @click="onClick"
+    v-html="htmlText">
+  </div>
   `,
   props: ['initialData', 'highlight', 'selected'],
   data() {

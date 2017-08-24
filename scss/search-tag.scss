@@ -3,11 +3,16 @@
   margin-right: 10px;
   background: coral;
   color: white;
-  display: inline-block;
+  display: flex;
   border-radius: 8px;
   font-weight: bold;
   overflow: hidden;
   flex-shrink: 1;
+  white-space: nowrap;
+
+  &.editing {
+    flex-shrink: 0;
+  }
 
   .search-tag__input {
     background: transparent;
@@ -18,6 +23,7 @@
     margin-right: 10px;
     font-weight: bold;
     color: white;
+    flex-shrink: 0;
 
     &::placeholder {
       color: white;
@@ -30,6 +36,7 @@
     font-weight: normal;
     text-overflow: ellipsis;
     overflow: hidden;
+    margin-right: 5px;
   }
 
   .suffix {

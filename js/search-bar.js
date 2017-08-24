@@ -1,7 +1,6 @@
 Vue.component('search-bar', {
   template: `
     <section class="search-bar">
-      <input class="search-bar__input" type="text" name="q">
       <div class="search-tags">
         <search-tag
           v-for="(data, key) in searchTags"

@@ -1,6 +1,6 @@
 Vue.component('search-tag', {
   template: `
-    <div class="search-tag" v-bind:class="{error: hasError}">
+    <div class="search-tag" v-bind:class="{error: hasError, editing: editing}">
       <span class="prefix">{{type}}: </span>
       <span class="value" @click="click" v-if="!editing">{{price(value, valueType)}}</span>
       <span class="suffix" v-if="!editing" @click="destroy">&times;</span>
