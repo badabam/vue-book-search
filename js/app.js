@@ -44,12 +44,27 @@ Vue.component('app', {
       Vue.set(this.searchTags, newTag.id, newTag);
     },
 
-    filterTags(value) {
-      this.currentTags = this.tagButtons.filter(tag => tag.title.indexOf(value) === 0);
+    sortTags(value) {
+      this.currentTags = this.tagButtons.slice().sort( (a, b) => {
+        const titleA = a.title;
+        const titleB = b.title;
+
+        if (titleA.indexOf(value) === 0) {
+          if (titleB.indexOf(value) === 0) {
+            return titleA < titleB ? -1 : 1;
+          } else {
+            return -1;
+          }
+        } else if (titleB.indexOf(value) === 0) {
+          return 1;
+        } else {
+          return titleA < titleB ? -1 : 1;
+        }
+      });
     },
 
     updateInput(value) {
-      this.filterTags(value);
+      this.sortTags(value);
       this.currentInput = value;
     },
 

@@ -8,7 +8,7 @@ var tagButtons = [
   {
     title: 'Release date',
     type: 'date',
-    placeholder: '04.2017'
+    placeholder: '06.1980'
   },
   {
     title: 'Publisher',
@@ -18,12 +18,12 @@ var tagButtons = [
   {
     title: 'Price from',
     type: 'price',
-    placeholder: '9.99'
+    placeholder: '1.99'
   },
   {
     title: 'Price to',
     type: 'price',
-    placeholder: '99.90'
+    placeholder: '49.99'
   },
   {
     title: 'Keyword',
@@ -40,7 +40,7 @@ var tagButtons = [
   {
     title: 'Media',
     type: 'text',
-    placeholder: 'DVD, CD',
+    placeholder: 'mp3, DVD',
     multi: true
   },
   {
