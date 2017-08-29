@@ -7,6 +7,8 @@ Vue.component('fulltext-input', {
       v-bind:value="inputText"
       @input="updateValue($event.target.value)"
       @keydown="saveText($event.target.value)"
+      @keydown.shift.tab="move(-1)"
+      @keyup.shift.tab="move(-1)"
       @keydown.tab.prevent="move(1)"
       @keyup.enter="submit"
       @keyup.delete="destroy"
