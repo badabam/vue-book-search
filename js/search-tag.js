@@ -108,6 +108,7 @@ Vue.component('search-tag', {
         this.$emit('createAnother', {
           title: this.title,
           value: '',
+          values: this.values,
           valueType: this.valueType,
           placeholder: this.placeholder,
           multi: this.multi
