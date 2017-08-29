@@ -4,14 +4,15 @@ Vue.component('fulltext-input', {
       class="fulltext-input"
       ref="input"
       type="text"
-      @keyup.enter="submit"
-      @keydown="saveText($event.target.value)"
-      @keyup.delete="destroy"
-      @input="updateValue($event.target.value)"
       v-bind:value="inputText"
+      @input="updateValue($event.target.value)"
+      @keydown="saveText($event.target.value)"
       @keydown.tab.prevent="move(1)"
+      @keyup.enter="submit"
+      @keyup.delete="destroy"
       @keyup.right="move(1)"
       @keyup.left="move(-1)"
+      @keyup.esc="move(null)"
     >
     `,
     props: ['inputText'],

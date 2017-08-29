@@ -14,7 +14,7 @@ Vue.component('search-bar', {
           ref="fulltextInput"
           v-bind:inputText="inputText"
           @update="updateInput"
-          @submit="onCreateSearchTag"
+          @submit="submit"
           @destroy="destroyLast"
           @move="move"
         />
@@ -24,7 +24,7 @@ Vue.component('search-bar', {
     `,
     props: ['searchTags', 'inputText'],
     methods: {
-      onCreateSearchTag(data) {
+      submit(data) {
         this.$emit('submit', data);
       },
 

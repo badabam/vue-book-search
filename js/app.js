@@ -15,7 +15,7 @@ Vue.component('app', {
         v-for="(data, index) in currentTags"
         @click="createSearchTag"
         v-bind:initialData="data"
-        v-bind:selected="index === selectedTag"
+        v-bind:selected="index === selectedTagIndex"
         v-bind:highlight="currentInput"
         v-bind:key="data.title" />
     </section>
@@ -29,20 +29,27 @@ Vue.component('app', {
       currentInput: '',
       searchTags: {},
       nextSearchTodoId: 0,
-      selectedTag: null
+      selectedTagIndex: null
     };
   },
 
   methods: {
     createSearchTag(data) {
+      let tagType;
+      if (this.selectedTagIndex != null) {
+        try {
+          tagType = this.currentTags[this.selectedTagIndex].title;
+        } catch(error) { }
+      }
       const newTag = {
-        value: data.value,
-        type: data.title,
+        value: tagType ? '' : data.value,
+        type: tagType ? tagType : data.title,
         valueType: data.type,
         placeholder: data.placeholder,
         id: this.nextSearchTodoId++
       };
       Vue.set(this.searchTags, newTag.id, newTag);
+      if (tagType) this.selectedTagIndex = null;
     },
 
     sortTags(value) {
@@ -71,6 +78,24 @@ Vue.component('app', {
 
     moveSelection(step) {
       console.log('moveSelection', step);
+      if (step == null) {
+        this.selectedTagIndex = null;
+        return;
+      }
+
+      if(step === 1 && this.selectedTagIndex == null) {
+        this.selectedTagIndex = 0;
+        return;
+      }
+
+      const newSelection = this.selectedTagIndex + step;
+      if (newSelection > this.currentTags.length - 1) {
+        this.selectedTagIndex = 0;
+      } else if (newSelection < 0) {
+        this.selectedTagIndex = this.currentTags.length - 1;
+      } else {
+        this.selectedTagIndex = newSelection;
+      }
     },
 
     destroySearchTag(id) {
