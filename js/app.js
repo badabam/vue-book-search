@@ -17,6 +17,7 @@ Vue.component('app', {
         v-bind:initialData="data"
         v-bind:selected="index === selectedTagIndex"
         v-bind:highlight="currentInput"
+        v-bind:doFilter="someHighlight"
         v-bind:key="data.title" />
     </section>
   </div>
@@ -31,6 +32,12 @@ Vue.component('app', {
       nextSearchTodoId: 0,
       selectedTagIndex: null
     };
+  },
+
+  computed: {
+    someHighlight() {
+      return this.currentTags.some( tag => tag.title.indexOf(this.currentInput) === 0);
+    }
   },
 
   methods: {

@@ -2,12 +2,16 @@ Vue.component('tag-button', {
   template: `
   <div
     class="tag-button"
-    v-bind:class="{selected: selected, highlight: hasHighlight, low: !hasHighlight }"
+    v-bind:class="{
+      selected: selected,
+      highlight: hasHighlight,
+      low: doFilter && !hasHighlight
+    }"
     @click="onClick"
     v-html="htmlText">
   </div>
   `,
-  props: ['initialData', 'highlight', 'selected'],
+  props: ['initialData', 'highlight', 'selected', 'doFilter'],
   data() {
     return {
       vm: Object.assign({}, this.initialData),
@@ -23,7 +27,7 @@ Vue.component('tag-button', {
       }
     },
     hasHighlight() {
-      return this.vm.title.indexOf(this.highlight) !== -1;
+      return this.vm.title.indexOf(this.highlight) === 0;
     }
   },
   methods: {
