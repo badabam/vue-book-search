@@ -10,6 +10,7 @@ Vue.component('app', {
       v-bind:inputText="currentInput"
       v-bind:searchTags="searchTags"
     />
+    <hintbar v-if="currentHint" v-bind:text="currentHint"/>
     <section class="tag-buttons">
       <tag-button
         v-for="(data, index) in currentTags"
@@ -30,7 +31,8 @@ Vue.component('app', {
       currentInput: '',
       searchTags: {},
       nextSearchTodoId: 0,
-      selectedTagIndex: null
+      selectedTagIndex: null,
+      currentHint: null
     };
   },
 

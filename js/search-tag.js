@@ -13,6 +13,7 @@ Vue.component('search-tag', {
           v-model="value"
           v-bind:placeholder="placeholder"
           @keyup="saveFilterValue"
+          @blur="blur"
           @keydown="keydown"
           @keyup.delete="destroy()"
           @keyup.enter="submit($event.target.value)"
