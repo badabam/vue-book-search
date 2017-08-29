@@ -8,7 +8,8 @@ var tagButtons = [
   {
     title: 'Release date',
     type: 'date',
-    placeholder: '06.1980'
+    placeholder: '06.1980',
+    hint: 'Possible values: <03.2012 for "published before March 2012", >2014 for all books from 2015 and above, <=2016 for all from 2016 and before'
   },
   {
     title: 'Publisher',
@@ -29,7 +30,8 @@ var tagButtons = [
     title: 'Keyword',
     type: 'text',
     placeholder: 'kochen',
-    multi: true
+    multi: true,
+    hint: 'Multi-field: Write a comma "," to instantly create the next item'
   },
   {
     title: 'Language',
@@ -49,7 +51,8 @@ var tagButtons = [
       'hardback',
       'ebook'
     ],
-    multi: true
+    multi: true,
+    hint: 'Use arrow buttons to select item or filter by writing'
   },
   {
     title: 'ISBN',

@@ -65,6 +65,7 @@ Vue.component('app', {
       };
       Vue.set(this.searchTags, newTag.id, newTag);
       if (currentTag) this.selectedTagIndex = null;
+      this.currentHint = currentTag ? currentTag.hint : data.hint;
     },
 
     sortTags(value) {

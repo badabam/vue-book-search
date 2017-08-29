@@ -14,7 +14,8 @@
   cursor: pointer;
   font-size: 18px;
   transition: all 0.3s ease;
-  margin-left: auto; }
+  margin-left: auto;
+  padding: 0 20px; }
   .search-bar__button:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     background: #ff6c37; }
