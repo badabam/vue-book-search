@@ -1,0 +1,7 @@
+.search-tags {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 100%; }

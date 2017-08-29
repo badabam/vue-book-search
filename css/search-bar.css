@@ -3,8 +3,7 @@
   margin: 20px;
   border: 6px solid #eee;
   border-radius: 4px;
-  position: relative;
-}
+  position: relative; }
 
 .search-bar__button {
   border: none;
@@ -14,19 +13,12 @@
   cursor: pointer;
   font-size: 18px;
   transition: all 0.3s ease;
-  margin-left: auto;
-
-  &:hover {
+  margin-left: auto; }
+  .search-bar__button:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    background: darken(coral, 5%);
-  }
-
-  &:active {
+    background: #ff6c37; }
+  .search-bar__button:active {
     transition: background 0.1s ease;
-    background: lighten(coral, 4%);
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
+    background: #ff8e64; }
+  .search-bar__button:focus {
+    outline: none; }

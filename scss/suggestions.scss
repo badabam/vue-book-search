@@ -1,0 +1,27 @@
+.suggestions {
+  position: fixed;
+  min-width: 140px;
+  z-index: 0;
+  margin-top: -2px;
+  background: coral;
+  font-weight: normal;
+  padding: 4px 0;
+  border-radius: 0 0 6px 6px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.suggestions__item:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.suggestions__item {
+  padding: 3px 10px 3px 7px;
+
+  &:hover,
+  &.selected {
+    background: lighten(coral, 5%);
+  }
+}

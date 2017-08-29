@@ -40,7 +40,15 @@ var tagButtons = [
   {
     title: 'Media',
     type: 'text',
-    placeholder: 'mp3, DVD',
+    placeholder: 'DVD',
+    values: [
+      'DVD',
+      'mp3',
+      'Bluray',
+      'soft-cover',
+      'hardback',
+      'ebook'
+    ],
     multi: true
   },
   {

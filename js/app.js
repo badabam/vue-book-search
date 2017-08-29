@@ -46,7 +46,6 @@ Vue.component('app', {
 
   methods: {
     createSearchTag(data) {
-      console.log('createSearchTag', data);
       let currentTag;
       if (this.selectedTagIndex != null) {
         try {
@@ -55,6 +54,7 @@ Vue.component('app', {
       }
       const newTag = {
         value: currentTag ? null : data.value,
+        values: currentTag ? currentTag.values : data.values,
         title: currentTag ? currentTag.title : data.title,
         valueType: currentTag ? currentTag.type : data.type,
         placeholder: currentTag ? currentTag.placeholder : data.placeholder,
@@ -90,7 +90,6 @@ Vue.component('app', {
     },
 
     moveSelection(step) {
-      console.log('moveSelection', step);
       if (step == null) {
         this.selectedTagIndex = null;
         return;

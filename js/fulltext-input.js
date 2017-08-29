@@ -34,12 +34,10 @@ Vue.component('fulltext-input', {
           value: event.target.value,
           title: 'Text search'
         });
-        console.log('submit', this.currentText);
         this.currentText = null;
       },
 
       move(step) {
-        console.log('move', step);
         this.$emit('move', step);
       },
 

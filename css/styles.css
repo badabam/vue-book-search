@@ -333,7 +333,6 @@ aside {
   border: none;
   background: coral;
   color: white;
-  padding: 0 30px;
   border-radius: 0 3px 3px 0;
   cursor: pointer;
   font-size: 18px;
@@ -366,7 +365,8 @@ aside {
   font-weight: bold;
   overflow: hidden;
   flex-shrink: 1;
-  white-space: nowrap; }
+  white-space: nowrap;
+  position: relative; }
   .search-tag.editing {
     flex-shrink: 0; }
   .search-tag:not(.editing):hover {
@@ -383,7 +383,9 @@ aside {
     font-weight: bold;
     color: white;
     flex-shrink: 0;
-    align-self: center; }
+    align-self: center;
+    position: relative;
+    z-index: 1; }
     .search-tag .search-tag__input::placeholder {
       color: white;
       font-weight: 200;
@@ -406,6 +408,26 @@ aside {
       margin-left: 0;
       margin-bottom: -4px;
       border-bottom: 1px solid white; }
+
+.suggestions {
+  position: fixed;
+  min-width: 140px;
+  z-index: 0;
+  margin-top: -2px;
+  background: coral;
+  font-weight: normal;
+  padding: 4px 0;
+  border-radius: 0 0 6px 6px; }
+  .suggestions:empty {
+    display: none; }
+
+.suggestions__item:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
+
+.suggestions__item {
+  padding: 3px 10px 3px 7px; }
+  .suggestions__item:hover, .suggestions__item.selected {
+    background: #ff926a; }
 
 .tag-buttons {
   margin: 0 20px;
