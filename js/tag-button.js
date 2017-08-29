@@ -21,9 +21,9 @@ Vue.component('tag-button', {
     htmlText() {
       if (this.highlight && this.hasHighlight) {
         const rest = this.vm.title.split(this.highlight)[1];
-        return `<strong>${this.highlight}</strong>${rest}`;
+        return `<strong>${this.highlight}</strong>${rest}${this.vm.multi ? '<sup>+</sup>': ''}`;
       } else {
-        return this.vm.title;
+        return `<span>${this.vm.title}${this.vm.multi ? '<sup>+</sup>': ''}</span>`;
       }
     },
     hasHighlight() {

@@ -40,6 +40,10 @@ Vue.component('app', {
     }
   },
 
+  mounted() {
+    this.sortTags();
+  },
+
   methods: {
     createSearchTag(data) {
       console.log('createSearchTag', data);
