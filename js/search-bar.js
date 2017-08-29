@@ -9,6 +9,7 @@ Vue.component('search-bar', {
           @destroy="destroy"
           @focusMainInput="focusMainInput"
           @created="updateInput('')"
+          @createAnother="submit"
         />
         <fulltext-input
           ref="fulltextInput"

@@ -35,6 +35,7 @@ Vue.component('app', {
 
   methods: {
     createSearchTag(data) {
+      console.log('createSearchTag', data);
       let currentTag;
       if (this.selectedTagIndex != null) {
         try {
@@ -43,9 +44,10 @@ Vue.component('app', {
       }
       const newTag = {
         value: currentTag ? null : data.value,
-        type: currentTag ? currentTag.title : data.title,
+        title: currentTag ? currentTag.title : data.title,
         valueType: currentTag ? currentTag.type : data.type,
         placeholder: currentTag ? currentTag.placeholder : data.placeholder,
+        multi: currentTag ? currentTag.multi : data.multi,
         id: this.nextSearchTodoId++
       };
       Vue.set(this.searchTags, newTag.id, newTag);
