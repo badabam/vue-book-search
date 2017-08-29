@@ -35,21 +35,21 @@ Vue.component('app', {
 
   methods: {
     createSearchTag(data) {
-      let tagType;
+      let currentTag;
       if (this.selectedTagIndex != null) {
         try {
-          tagType = this.currentTags[this.selectedTagIndex].title;
+          currentTag = this.currentTags[this.selectedTagIndex];
         } catch(error) { }
       }
       const newTag = {
-        value: tagType ? '' : data.value,
-        type: tagType ? tagType : data.title,
-        valueType: data.type,
-        placeholder: data.placeholder,
+        value: currentTag ? null : data.value,
+        type: currentTag ? currentTag.title : data.title,
+        valueType: currentTag ? currentTag.type : data.type,
+        placeholder: currentTag ? currentTag.placeholder : data.placeholder,
         id: this.nextSearchTodoId++
       };
       Vue.set(this.searchTags, newTag.id, newTag);
-      if (tagType) this.selectedTagIndex = null;
+      if (currentTag) this.selectedTagIndex = null;
     },
 
     sortTags(value) {

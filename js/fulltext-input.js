@@ -33,7 +33,7 @@ Vue.component('fulltext-input', {
           title: 'Text search'
         });
         console.log('submit', this.currentText);
-        this.currentText = '';
+        this.currentText = null;
       },
 
       move(step) {
