@@ -6,15 +6,15 @@ Vue.component('suggestions', {
       v-for="(item, index) in currentItems"
       @click="click(index)"
       v-bind:class="{selected: currentIndex === index}"
-      >{{item}}</div>
+    >{{item}}</div>
   </section>
   `,
-  props: ['items', 'yPosition', 'filter'],
+  props: ['items', 'filter'],
 
   data() {
     return {
       items: null,
-      currentIndex: 0,
+      currentIndex: 0
     };
   },
 
@@ -45,7 +45,7 @@ Vue.component('suggestions', {
       if(!this.currentItem) {
         return;
       }
-       this.$emit('submit', this.currentItem);
+      this.$emit('submit', this.currentItem);
     },
 
     clear() {
@@ -54,7 +54,7 @@ Vue.component('suggestions', {
 
     click(index) {
       this.currentIndex = index;
-      setTimeout(x => this.submit());
+      this.submit();
     }
   }
 });

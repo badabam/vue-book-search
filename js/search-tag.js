@@ -51,22 +51,26 @@ Vue.component('search-tag', {
     price: price,
 
     submit(value) {
-      if (this.hasError) { return; } // early out
-
+      if (this.hasError) { return false; } // early out
       if (this.values) {
-        if (this.values.indexOf(this.value) !== -1) {
-          this.stopEditing(this.value);
+        if (this.values.indexOf(value) !== -1) {
+          this.stopEditing(value);
+          return true;
         } else if (this.suggestions.currentItem) {
           this.stopEditing(this.suggestions.currentItem);
+          return true;
         } else {
           this.filterValue = null;
           this.value = null;
           this.suggestions.clear();
+          return false;
         }
       } else if (value) {
         this.stopEditing(value);
+        return true;
       } else {
         this.destroy();
+        return false;
       }
     },
 
@@ -74,7 +78,6 @@ Vue.component('search-tag', {
       this.value = value.trim();
       this.editing = false;
       this.$emit('focusMainInput');
-
     },
 
     destroy(force) {
@@ -104,23 +107,27 @@ Vue.component('search-tag', {
       if (event.key === ',' && this.multi) {
         event.stopImmediatePropagation();
         event.preventDefault();
-        const val = event.target.value.split(',')[0];
-        this.submit(val);
-        this.$emit('createAnother', {
-          title: this.title,
-          value: '',
-          values: this.values,
-          valueType: this.valueType,
-          placeholder: this.placeholder,
-          multi: this.multi
-        });
+        const val = event.target.value ? event.target.value.split(',')[0] : null;
+        if (this.submit(val)) {
+          this.$emit('createAnother', {
+            title: this.title,
+            value: '',
+            values: this.values,
+            valueType: this.valueType,
+            placeholder: this.placeholder,
+            multi: this.multi
+          });
+        }
       }
     },
 
     blur(event) {
-      this.value = event.target.value;
-      this.editing = false;
-      this.destroy();
+      if(!event.target.value) {
+        setTimeout(() => {
+          this.editing = false;
+          this.destroy();
+        }, 100);
+      }
     },
 
     click(event) {
