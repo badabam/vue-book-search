@@ -2,5 +2,6 @@
   "globals": {
     "Vue": true
   },
-  "esversion": 6
+  "esversion": 6,
+  "expr": true
 }
