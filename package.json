@@ -9,8 +9,7 @@
     "styles:build": "node-sass -o css scss/styles.scss"
   },
   "dependencies": {
-    "bootstrap": "4.0.0-beta",
-    "vue": "2.4.2"
+    "bootstrap": "4.0.0-beta"
   },
   "devDependencies": {
     "jshint": "2.9.5",
