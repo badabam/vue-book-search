@@ -2,13 +2,13 @@ Vue.component('search-tag', {
   template: `
     <div class="search-tag" v-bind:class="{error: hasError, editing: editing}">
       <span @click="click" class="prefix">{{label}}: </span>
-      <span @click="click" class="value" v-if="!editing">{{price(value, valueType)}}</span>
+      <span @click="click" class="value" v-if="!editing">{{price(value, type)}}</span>
       <span @click="destroy(true)" class="suffix" v-if="!editing">&times;</span>
       <div className="wrapper">
         <input
           class="search-tag__input"
-          type="text"
           ref="input"
+          type="text"
           v-if="editing"
           v-model="value"
           v-bind:placeholder="placeholder"
@@ -26,8 +26,10 @@ Vue.component('search-tag', {
             ref="suggestions"
             v-if="values && editing"
             v-bind:items="values"
+            v-bind:filter="filterValue"
+            v-bind:startIndex="this.anyValue ? null : 0"
             @submit="submit"
-            v-bind:filter="filterValue" />
+          />
       </div>
     </div>
   `,
@@ -37,6 +39,9 @@ Vue.component('search-tag', {
       editing: !this.data.value,
       interimValue: null,
       filterValue: null,
+      values: null,
+      type: null,
+      anyValue: false,
       // jshint ignore:start
       ...this.data
       // jshint ignore:end
@@ -44,7 +49,7 @@ Vue.component('search-tag', {
   },
   computed: {
     hasError() {
-      const result = this.valueType === 'price' && this.value && !/\d+/.test(this.value);
+      const result = this.type === 'price' && this.value && !/\d+/.test(this.value);
       return result;
     }
   },
@@ -52,18 +57,27 @@ Vue.component('search-tag', {
     price: price,
 
     submit(value) {
-      if (this.hasError) { return false; } // early out
+      if (this.hasError || !this.editing) {
+        return false; // early out
+      }
+
+      const suggestions = this.$refs && this.$refs.suggestions;
+      console.log('submit', value, this.values, suggestions && suggestions.currentItem, this.anyValue);
+
       if (this.values) {
         if (this.values.indexOf(value) !== -1) {
           this.stopEditing(value);
           return true;
-        } else if (this.suggestions.currentItem) {
-          this.stopEditing(this.suggestions.currentItem);
+        } else if ( (suggestions && suggestions.currentItem)) {
+          this.stopEditing(suggestions.currentItem);
+          return true;
+        } else if (suggestions && this.anyValue){
+          this.stopEditing(value);
           return true;
         } else {
           this.filterValue = null;
           this.value = null;
-          this.suggestions.clear();
+          suggestions && suggestions.clear();
           return false;
         }
       } else if (value) {
@@ -101,7 +115,7 @@ Vue.component('search-tag', {
     },
 
     move(step) {
-      this.suggestions && this.suggestions.move(step);
+      this.$refs && this.$refs.suggestions.move(step);
     },
 
     checkMulti(event) {
@@ -114,7 +128,7 @@ Vue.component('search-tag', {
             label: this.label,
             value: '',
             values: this.values,
-            valueType: this.valueType,
+            type: this.type,
             placeholder: this.placeholder,
             multi: this.multi
           });
@@ -123,13 +137,11 @@ Vue.component('search-tag', {
     },
 
     blur(event) {
-      if(!this.values) {
-        this.value = event.target.value;
-        setTimeout(() => {
-          this.editing = false;
-          this.destroy();
-        }, 100);
-      }
+      // const value = event.target.value;
+      const suggestions = this.$refs && this.$refs.suggestions;
+      const value = this.values && suggestions ? suggestions.currentItem : event.target.value;
+      setTimeout(() => this.submit(value), 100);
+      // this.submit(value);
     },
 
     click(event) {
@@ -139,14 +151,18 @@ Vue.component('search-tag', {
         this.value = null;
         setTimeout(() => {
           this.value = value;
-          this.$refs.input && this.$refs.input.focus()
+          this.focus();
         });
       }
+    },
+
+    focus() {
+      this.$refs && this.$refs.input && this.$refs.input.focus();
     }
   },
   mounted() {
-    this.$refs.input && this.$refs.input.focus();
-    this.$emit('created');
+    this.focus();
     this.suggestions = this.$refs && this.$refs.suggestions;
+    this.$emit('created');
   }
 });

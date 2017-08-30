@@ -9,11 +9,11 @@ Vue.component('suggestions', {
     >{{item}}</div>
   </section>
   `,
-  props: ['items', 'filter'],
+  props: ['items', 'filter', 'startIndex'],
 
   data() {
     return {
-      currentIndex: 0
+      currentIndex: this.startIndex
     };
   },
 
@@ -33,10 +33,21 @@ Vue.component('suggestions', {
 
   methods: {
     move(step) {
-      if (step == null) return this.currentIndex = null;
+      if (step == null) {
+       this.currentIndex = null;
+       return;
+      }
+
+      if (this.currentIndex == null) {
+        this.currentIndex = 0;
+        return;
+      }
+
       const newPosition = this.currentIndex + step;
-      if (newPosition >= 0 && newPosition <= this.currentItems.length -1) {
+      if (newPosition >= 0 && newPosition <= this.currentItems.length - 1) {
         this.currentIndex = newPosition;
+      } else {
+        this.currentIndex = null;
       }
     },
 
@@ -54,6 +65,7 @@ Vue.component('suggestions', {
     click(index) {
       this.currentIndex = index;
       this.submit();
+      console.log('click', this.currentItem);
     }
   }
 });

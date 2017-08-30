@@ -65,16 +65,12 @@ Vue.component('app', {
           currentTag = this.currentTags[this.selectedTagIndex];
         } catch(error) { }
       }
-      const newTag = {
+
+      const newTag = Object.assign({}, currentTag ? currentTag : data, {
         value: currentTag ? null : data.value,
-        values: currentTag ? currentTag.values : data.values,
-        label: currentTag ? currentTag.label : data.label,
-        valueType: currentTag ? currentTag.type : data.type,
-        placeholder: currentTag ? currentTag.placeholder : data.placeholder,
-        multi: currentTag ? currentTag.multi : data.multi,
-        hint: currentTag ? currentTag.hint : data.hint,
         id: this.nextSearchTodoId++
-      };
+      });
+
       Vue.set(this.searchTags, newTag.id, newTag);
       if (currentTag) this.selectedTagIndex = null;
       this.currentHint = currentTag ? currentTag.hint : data.hint;
@@ -144,7 +140,6 @@ Vue.component('app', {
       Object.keys(this.searchTags).forEach(key => {
         const tag = this.searchTags[key];
         Vue.set(this.searchTags, key, (tag.id === data.id) ? {...tag, value: data.value} : tag);
-        console.log('updateSearchTag', key, data.value);
       });
     }
   }

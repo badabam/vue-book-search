@@ -1,49 +1,41 @@
 * {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 html {
   background: cornflowerblue;
   padding: 20px;
   font-size: 16px;
-  font-weight: normal;
-}
+  font-weight: normal; }
 
 body {
   height: 100vh;
   background: #fefefe;
-  box-shadow: 1px 1px 6px rgba(black, 0.2);
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
   overflow: auto;
   display: flex;
-  flex-direction: column;
-}
+  flex-direction: column; }
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+  -webkit-appearance: none;
+  margin: 0; }
 
 input[type=number] {
-    -moz-appearance:textfield;
-}
+  -moz-appearance: textfield; }
 
 input {
   height: 40px;
   flex: 1;
   border: none;
-  padding: 0 10px;
-  &:focus {
-    outline: none;
-  }
-}
+  padding: 0 10px; }
+  input:focus {
+    outline: none; }
 
 sup {
   font-size: 10px;
   position: relative;
   top: -8px;
-  color: #888;
-}
+  color: #888; }
 
 aside {
   text-align: center;
@@ -51,9 +43,8 @@ aside {
   color: #ccc;
   font-weight: bold;
   font-size: 22px;
-  line-height: 2.0;
-
-  code {
+  line-height: 2.0; }
+  aside code {
     color: #aaa;
     font-family: monospace;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
@@ -62,11 +53,6 @@ aside {
     padding: 2px 3px;
     border-radius: 3px;
     vertical-align: middle;
-    line-height: 1;
-
-    &[turned] {
-      transform: rotate(180deg);
-    }
-  }
-}
-
+    line-height: 1; }
+    aside code[turned] {
+      transform: rotate(180deg); }

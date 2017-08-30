@@ -18,6 +18,20 @@ var tagButtons = [
     placeholder: 'BoD'
   },
   {
+    label: 'Product group',
+    type: 'number',
+    placeholder: '12500',
+    anyValue: true,
+    values: [
+      '12500',
+      '14810',
+      '21110',
+      '22500',
+      '41300',
+      '42500'
+    ]
+  },
+  {
     label: 'Price from',
     type: 'price',
     placeholder: '1.99'

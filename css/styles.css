@@ -310,14 +310,20 @@ aside {
   margin: 80px auto 0;
   color: #ccc;
   font-weight: bold;
-  font-size: 22px; }
+  font-size: 22px;
+  line-height: 2.0; }
   aside code {
     color: #aaa;
     font-family: monospace;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
     margin: 0 4px;
-    padding: 4px;
-    border-radius: 3px; }
+    display: inline-block;
+    padding: 2px 3px;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1; }
+    aside code[turned] {
+      transform: rotate(180deg); }
 
 .error {
   background: red !important; }
@@ -406,7 +412,6 @@ aside {
     flex-shrink: 0; }
   .search-tag:not(.editing):hover {
     background: #ff6c37;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     cursor: pointer; }
   .search-tag .search-tag__input {
     background: transparent;
@@ -451,16 +456,18 @@ aside {
   margin-top: -2px;
   background: coral;
   font-weight: normal;
-  padding: 4px 0;
+  padding: 0;
   border-radius: 0 0 6px 6px; }
   .suggestions:empty {
     display: none; }
 
 .suggestions__item:not(:last-child) {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0; }
 
 .suggestions__item {
-  padding: 3px 10px 3px 7px; }
+  padding: 3px 10px 3px 7px;
+  border-radius: 0 0 6px 6px; }
   .suggestions__item:hover, .suggestions__item.selected {
     background: #ff926a; }
 
