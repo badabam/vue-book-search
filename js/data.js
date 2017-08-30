@@ -4,12 +4,12 @@ var tagButtons = [
     type: 'text',
     placeholder: 'Rowling',
     multi: true,
-    hint: 'Add another by pressing <code>,</code>'
+    hint: 'Add another by pressing <code>,</code> or <code>+</code>'
   },
   {
     label: 'Release date',
     type: 'date',
-    placeholder: '< 06.1980',
+    placeholder: '> 10.2015',
     hint: '<code>&lt; 03.2012</code> = before March 2012, <code>&lt; 2014</code> for all books from 2015 and above, <code>&lt;=2016</code> for all from 2016 and before'
   },
   {
@@ -23,6 +23,7 @@ var tagButtons = [
     type: 'number',
     placeholder: '12500',
     anyValue: true,
+    multi: true,
     values: [
       '12500',
       '14810',
@@ -50,14 +51,14 @@ var tagButtons = [
     type: 'text',
     placeholder: 'cooking',
     multi: true,
-    hint: 'Add another by pressing <code>,</code>'
+    hint: 'Add another by pressing <code>,</code> or <code>+</code>'
   },
   {
     label: 'Language',
     type: 'text',
     placeholder: 'german',
     multi: true,
-    hint: 'Add another by pressing <code>,</code>'
+    hint: 'Add another by pressing <code>,</code> or <code>+</code>'
   },
   {
     label: 'Media',
@@ -77,7 +78,8 @@ var tagButtons = [
   {
     label: 'ISBN',
     type: 'isbn',
-    placeholder: '97x-x-xxx-xxxxx-x',
-    hint: 'Number-formatting is not yet implemented.'
+    placeholder: 'xxx-x-xxx-xxxxx-x',
+    hint: 'Number-formatting is not yet implemented.',
+    size: 180
   },
 ];

@@ -12,6 +12,7 @@ Vue.component('search-tag', {
           v-if="editing"
           v-model="value"
           v-bind:placeholder="placeholder"
+          v-bind:style="inputStyles"
           @keyup="saveFilterValue"
           @blur="blur"
           @keydown="keydown"
@@ -43,6 +44,7 @@ Vue.component('search-tag', {
       type: null,
       placeholder: null,
       anyValue: false,
+      size: null,
       // jshint ignore:start
       ...this.data
       // jshint ignore:end
@@ -52,6 +54,10 @@ Vue.component('search-tag', {
     hasError() {
       const result = this.type === 'price' && this.value && !/\d+/.test(this.value);
       return result;
+    },
+
+    inputStyles() {
+      return this.size ? {width: `${this.size}px`} : {};
     }
   },
   methods: {
@@ -120,7 +126,7 @@ Vue.component('search-tag', {
     },
 
     checkMulti(event) {
-      if (event.key === ',' && this.multi) {
+      if ( ([',', '+'].indexOf(event.key) !== -1) && this.multi) {
         event.stopImmediatePropagation();
         event.preventDefault();
         const val = event.target.value ? event.target.value.split(',')[0] : null;
@@ -159,11 +165,22 @@ Vue.component('search-tag', {
 
     focus() {
       this.$refs && this.$refs.input && this.$refs.input.focus();
-    }
+    },
+
+    getFormatOptions(type) {
+      switch(this.type) {
+        case 'isbn': return {blocks: [3, 1, 5, 3, 1], delimiter: '-'};
+        default: return null;
+      }
+    },
   },
   mounted() {
     this.focus();
     this.suggestions = this.$refs && this.$refs.suggestions;
     this.$emit('created');
+    const format = this.getFormatOptions(this.type);
+    if (format) {
+      new Cleave('.search-tag__input', format);
+    }
   }
 });
