@@ -1,7 +1,7 @@
 Vue.component('search-tag', {
   template: `
     <div class="search-tag" v-bind:class="{error: hasError, editing: editing}">
-      <span @click="click" class="prefix">{{title}}: </span>
+      <span @click="click" class="prefix">{{label}}: </span>
       <span @click="click" class="value" v-if="!editing">{{price(value, valueType)}}</span>
       <span @click="destroy(true)" class="suffix" v-if="!editing">&times;</span>
       <div className="wrapper">
@@ -78,7 +78,7 @@ Vue.component('search-tag', {
     stopEditing(value) {
       this.value = value.trim();
       this.editing = false;
-      this.$emit('editingDone');
+      this.$emit('editingDone', {id: this.id, value: this.value});
     },
 
     destroy(force) {
@@ -111,7 +111,7 @@ Vue.component('search-tag', {
         const val = event.target.value ? event.target.value.split(',')[0] : null;
         if (this.submit(val)) {
           this.$emit('createAnother', {
-            title: this.title,
+            label: this.label,
             value: '',
             values: this.values,
             valueType: this.valueType,

@@ -4,7 +4,7 @@ Vue.component('app', {
     <hintbar v-if="currentHint" v-bind:text="currentHint"/>
     <search-bar
       @submit="createSearchTag"
-      @editingDone="reset"
+      @editingDone="updateSearchTag"
       @destroy="destroySearchTag"
       @update="updateInput"
       @move="moveSelection"
@@ -20,9 +20,9 @@ Vue.component('app', {
         v-bind:selected="index === selectedTagIndex"
         v-bind:highlight="currentInput"
         v-bind:doFilter="someHighlight"
-        v-bind:key="data.title" />
+        v-bind:key="data.label" />
     </section>
-    <section className="searching">Searching for {{}}</section>
+    <section class="searching" v-show="searching" v-html="'<h3>Searching for</h3>' + currentSearch"></section>
   </div>
   `,
 
@@ -34,19 +34,22 @@ Vue.component('app', {
       searchTags: {},
       nextSearchTodoId: 0,
       selectedTagIndex: null,
-      currentHint: null
+      currentHint: null,
+      searching: false
     };
   },
 
   computed: {
     someHighlight() {
-      return this.currentTags.some( tag => tag.title.indexOf(this.currentInput) === 0);
+      return this.currentTags.some( tag => tag.label.indexOf(this.currentInput) === 0);
     },
 
     currentSearch() {
-      return this.currentTags.reduce(prev, current => {
-
-      }, '');
+      return '<p>' +
+        Object.values(this.searchTags).reduce( (prev, current, index, arr) => {
+        return prev += `<i class="searching__label">${current.label}:</i> ${current.value}${index < arr.length -1 ? ', ' : ''}`;
+      }, '')  +
+      '</p>';
     }
   },
 
@@ -65,7 +68,7 @@ Vue.component('app', {
       const newTag = {
         value: currentTag ? null : data.value,
         values: currentTag ? currentTag.values : data.values,
-        title: currentTag ? currentTag.title : data.title,
+        label: currentTag ? currentTag.label : data.label,
         valueType: currentTag ? currentTag.type : data.type,
         placeholder: currentTag ? currentTag.placeholder : data.placeholder,
         multi: currentTag ? currentTag.multi : data.multi,
@@ -78,25 +81,29 @@ Vue.component('app', {
     },
 
     search() {
-      this.searchTags = {};
       this.currentHint = '';
+      this.searching = true;
+      setTimeout(() => {
+        this.searching = false;
+        this.searchTags = {};
+      }, 2000);
     },
 
     sortTags(value) {
       this.currentTags = this.tagButtons.slice().sort( (a, b) => {
-        const titleA = a.title;
-        const titleB = b.title;
+        const labelA = a.label;
+        const labelB = b.label;
 
-        if (titleA.indexOf(value) === 0) {
-          if (titleB.indexOf(value) === 0) {
-            return titleA < titleB ? -1 : 1;
+        if (labelA.indexOf(value) === 0) {
+          if (labelB.indexOf(value) === 0) {
+            return labelA < labelB ? -1 : 1;
           } else {
             return -1;
           }
-        } else if (titleB.indexOf(value) === 0) {
+        } else if (labelB.indexOf(value) === 0) {
           return 1;
         } else {
-          return titleA < titleB ? -1 : 1;
+          return labelA < labelB ? -1 : 1;
         }
       });
     },
@@ -129,12 +136,16 @@ Vue.component('app', {
 
     destroySearchTag(id) {
       Vue.delete(this.searchTags, id);
-      this.reset();
+      this.currentHint = '';
     },
 
-    reset(target) {
-      target && target.focus();
+    updateSearchTag(data) {
       this.currentHint = '';
+      Object.keys(this.searchTags).forEach(key => {
+        const tag = this.searchTags[key];
+        Vue.set(this.searchTags, key, (tag.id === data.id) ? {...tag, value: data.value} : tag);
+        console.log('updateSearchTag', key, data.value);
+      });
     }
   }
 });

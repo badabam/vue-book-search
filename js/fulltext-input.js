@@ -33,7 +33,7 @@ Vue.component('fulltext-input', {
         if (event.target.value) {
           this.$emit('submit', {
             value: event.target.value,
-            title: 'Text search'
+            label: 'Text search'
           });
         } else {
           this.$emit('search');

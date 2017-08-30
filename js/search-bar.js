@@ -30,9 +30,10 @@ Vue.component('search-bar', {
         this.$emit('submit', data);
       },
 
-      editingDone() {
+      editingDone(data) {
         const target = this.$refs.fulltextInput.$el;
-        this.$emit('editingDone', target);
+        target && target.focus();
+        this.$emit('editingDone', data);
       },
 
       move(step) {

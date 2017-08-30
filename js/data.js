@@ -1,63 +1,63 @@
 var tagButtons = [
   {
-    title: 'Author',
+    label: 'Author',
     type: 'text',
     placeholder: 'Tolkien',
     multi: true,
     hint: 'Create another by pressing <code>,</code>'
   },
   {
-    title: 'Release date',
+    label: 'Release date',
     type: 'date',
     placeholder: '< 06.1980',
     hint: '<code>&lt; 03.2012</code> = before March 2012, <code>&lt; 2014</code> for all books from 2015 and above, <code>&lt;=2016</code> for all from 2016 and before'
   },
   {
-    title: 'Publisher',
+    label: 'Publisher',
     type: 'text',
     placeholder: 'Bastei Lübbe AG'
   },
   {
-    title: 'Price from',
+    label: 'Price from',
     type: 'price',
     placeholder: '1.99'
   },
   {
-    title: 'Price to',
+    label: 'Price to',
     type: 'price',
     placeholder: '49.99'
   },
   {
-    title: 'Keyword',
+    label: 'Keyword',
     type: 'text',
-    placeholder: 'kochen',
+    placeholder: 'cooking',
     multi: true,
     hint: 'Create another by pressing <code>,</code>'
   },
   {
-    title: 'Language',
+    label: 'Language',
     type: 'text',
-    placeholder: 'englisch',
+    placeholder: 'german',
     multi: true,
     hint: 'Create another by pressing <code>,</code>'
   },
   {
-    title: 'Media',
+    label: 'Media',
     type: 'text',
     placeholder: 'DVD',
     values: [
+      'softcover',
+      'hardcover',
+      'ebook',
       'DVD',
-      'mp3',
       'Bluray',
-      'soft-cover',
-      'hardback',
-      'ebook'
+      'mp3',
     ],
     multi: true,
     hint: 'Use <code>↑</code> and <code>↓</code> to move.'
   },
   {
-    title: 'ISBN',
+    label: 'ISBN',
     type: 'isbn',
     placeholder: '97x-x-xxx-xxxxx-x',
     hint: 'Number-formatting is not yet implemented.'

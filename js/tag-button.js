@@ -20,14 +20,14 @@ Vue.component('tag-button', {
   computed: {
     htmlText() {
       if (this.highlight && this.hasHighlight) {
-        const rest = this.vm.title.split(this.highlight)[1];
+        const rest = this.vm.label.split(this.highlight)[1];
         return `<strong>${this.highlight}</strong>${rest}${this.vm.multi ? '<sup>+</sup>': ''}`;
       } else {
-        return `<span>${this.vm.title}${this.vm.multi ? '<sup>+</sup>': ''}</span>`;
+        return `<span>${this.vm.label}${this.vm.multi ? '<sup>+</sup>': ''}</span>`;
       }
     },
     hasHighlight() {
-      return this.vm.title.indexOf(this.highlight) === 0;
+      return this.vm.label.indexOf(this.highlight) === 0;
     }
   },
   methods: {
