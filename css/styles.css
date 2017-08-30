@@ -323,9 +323,13 @@ aside {
   background: red !important; }
 
 .hintbar {
-  margin: -20px 20px 20px;
+  margin: 0 0 -20px;
   background: lightyellow;
-  padding: 5px 20px; }
+  padding: 5px 30px; }
+  .hintbar code {
+    padding: 1px 4px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); }
 
 .search-bar {
   display: flex;
@@ -452,8 +456,9 @@ aside {
   white-space: nowrap; }
   .tag-button:hover {
     background: coral;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     color: white; }
+    .tag-button:hover * {
+      color: white; }
   .tag-button:active {
     background: #ff926a; }
   .tag-button.selected {

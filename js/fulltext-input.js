@@ -10,7 +10,7 @@ Vue.component('fulltext-input', {
       @keydown.shift.tab="move(-1)"
       @keyup.shift.tab="move(-1)"
       @keydown.tab.prevent="move(1)"
-      @keyup.enter="submit"
+      @keyup.enter="enter"
       @keyup.delete="destroy"
       @keyup.right="move(1)"
       @keyup.left="move(-1)"
@@ -29,11 +29,15 @@ Vue.component('fulltext-input', {
     },
 
     methods: {
-      submit(event) {
-        this.$emit('submit', {
-          value: event.target.value,
-          title: 'Text search'
-        });
+      enter(event) {
+        if (event.target.value) {
+          this.$emit('submit', {
+            value: event.target.value,
+            title: 'Text search'
+          });
+        } else {
+          this.$emit('search');
+        }
         this.currentText = null;
       },
 

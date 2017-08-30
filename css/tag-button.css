@@ -1,0 +1,20 @@
+.tag-button {
+  background: #ddd;
+  padding: 2px 12px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  white-space: nowrap; }
+  .tag-button:hover {
+    background: coral;
+    color: white; }
+    .tag-button:hover * {
+      color: white; }
+  .tag-button:active {
+    background: #ff926a; }
+  .tag-button.selected {
+    border-color: coral; }
+  .tag-button.low {
+    opacity: 0.6; }

@@ -1,16 +1,17 @@
 Vue.component('app', {
   template: `
   <div>
+    <hintbar v-if="currentHint" v-bind:text="currentHint"/>
     <search-bar
       @submit="createSearchTag"
-      @focusMainInput="focusTarget"
+      @editingDone="reset"
       @destroy="destroySearchTag"
       @update="updateInput"
       @move="moveSelection"
+      @search="search"
       v-bind:inputText="currentInput"
       v-bind:searchTags="searchTags"
     />
-    <hintbar v-if="currentHint" v-bind:text="currentHint"/>
     <section class="tag-buttons">
       <tag-button
         v-for="(data, index) in currentTags"
@@ -21,6 +22,7 @@ Vue.component('app', {
         v-bind:doFilter="someHighlight"
         v-bind:key="data.title" />
     </section>
+    <section className="searching">Searching for {{}}</section>
   </div>
   `,
 
@@ -39,6 +41,12 @@ Vue.component('app', {
   computed: {
     someHighlight() {
       return this.currentTags.some( tag => tag.title.indexOf(this.currentInput) === 0);
+    },
+
+    currentSearch() {
+      return this.currentTags.reduce(prev, current => {
+
+      }, '');
     }
   },
 
@@ -61,11 +69,17 @@ Vue.component('app', {
         valueType: currentTag ? currentTag.type : data.type,
         placeholder: currentTag ? currentTag.placeholder : data.placeholder,
         multi: currentTag ? currentTag.multi : data.multi,
+        hint: currentTag ? currentTag.hint : data.hint,
         id: this.nextSearchTodoId++
       };
       Vue.set(this.searchTags, newTag.id, newTag);
       if (currentTag) this.selectedTagIndex = null;
       this.currentHint = currentTag ? currentTag.hint : data.hint;
+    },
+
+    search() {
+      this.searchTags = {};
+      this.currentHint = '';
     },
 
     sortTags(value) {
@@ -115,10 +129,12 @@ Vue.component('app', {
 
     destroySearchTag(id) {
       Vue.delete(this.searchTags, id);
+      this.reset();
     },
 
-    focusTarget(target) {
+    reset(target) {
       target && target.focus();
+      this.currentHint = '';
     }
   }
 });

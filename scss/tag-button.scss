@@ -10,8 +10,11 @@
 
   &:hover {
     background: coral;
-    box-shadow: 0 2px 4px rgba(black, 0.3);
     color: white;
+
+    * {
+      color: white;
+    }
   }
 
   &:active {

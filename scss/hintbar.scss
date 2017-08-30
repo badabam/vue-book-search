@@ -1,5 +1,11 @@
 .hintbar {
-  margin: -20px 20px 20px;
+  margin: 0 0 -20px;
   background: lightyellow;
-  padding: 5px 20px;
+  padding: 5px 30px;
+
+  code {
+    padding: 1px 4px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(black, 0.3);
+  }
 }

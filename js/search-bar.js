@@ -7,7 +7,7 @@ Vue.component('search-bar', {
           v-bind:data="data"
           v-bind:key="key"
           @destroy="destroy"
-          @focusMainInput="focusMainInput"
+          @editingDone="editingDone"
           @created="updateInput('')"
           @createAnother="submit"
         />
@@ -16,11 +16,12 @@ Vue.component('search-bar', {
           v-bind:inputText="inputText"
           @update="updateInput"
           @submit="submit"
+          @search="$emit('search')"
           @destroy="destroyLast"
           @move="move"
         />
       </div>
-      <button class="search-bar__button" type="submit">Search</button>
+      <button @click="$emit('search')" class="search-bar__button" type="submit">Search</button>
     </section>
     `,
     props: ['searchTags', 'inputText'],
@@ -29,9 +30,9 @@ Vue.component('search-bar', {
         this.$emit('submit', data);
       },
 
-      focusMainInput() {
+      editingDone() {
         const target = this.$refs.fulltextInput.$el;
-        this.$emit('focusMainInput', target);
+        this.$emit('editingDone', target);
       },
 
       move(step) {

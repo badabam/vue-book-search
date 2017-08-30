@@ -3,13 +3,14 @@ var tagButtons = [
     title: 'Author',
     type: 'text',
     placeholder: 'Tolkien',
-    multi: true
+    multi: true,
+    hint: 'Create another by pressing <code>,</code>'
   },
   {
     title: 'Release date',
     type: 'date',
-    placeholder: '06.1980',
-    hint: 'Possible values: <03.2012 for "published before March 2012", >2014 for all books from 2015 and above, <=2016 for all from 2016 and before'
+    placeholder: '< 06.1980',
+    hint: '<code>&lt; 03.2012</code> = before March 2012, <code>&lt; 2014</code> for all books from 2015 and above, <code>&lt;=2016</code> for all from 2016 and before'
   },
   {
     title: 'Publisher',
@@ -31,13 +32,14 @@ var tagButtons = [
     type: 'text',
     placeholder: 'kochen',
     multi: true,
-    hint: 'Multi-field: Write a comma "," to instantly create the next item'
+    hint: 'Create another by pressing <code>,</code>'
   },
   {
     title: 'Language',
     type: 'text',
     placeholder: 'englisch',
-    multi: true
+    multi: true,
+    hint: 'Create another by pressing <code>,</code>'
   },
   {
     title: 'Media',
@@ -52,11 +54,12 @@ var tagButtons = [
       'ebook'
     ],
     multi: true,
-    hint: 'Use arrow buttons to select item or filter by writing'
+    hint: 'Use <code>↑</code> and <code>↓</code> to move.'
   },
   {
     title: 'ISBN',
-    type: 'number',
-    placeholder: '97x-x-xxx-xxxxx-x'
+    type: 'isbn',
+    placeholder: '97x-x-xxx-xxxxx-x',
+    hint: 'Number-formatting is not yet implemented.'
   },
 ];

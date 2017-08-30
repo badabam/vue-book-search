@@ -78,7 +78,7 @@ Vue.component('search-tag', {
     stopEditing(value) {
       this.value = value.trim();
       this.editing = false;
-      this.$emit('focusMainInput');
+      this.$emit('editingDone');
     },
 
     destroy(force) {
