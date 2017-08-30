@@ -22,7 +22,7 @@ Vue.component('app', {
         v-bind:doFilter="someHighlight"
         v-bind:key="data.label" />
     </section>
-    <section class="searching" v-show="searching" v-html="'<h3>Searching for</h3>' + currentSearch"></section>
+    <section class="searching" v-if="searching && Object.keys(searchTags).length" v-html="'<h3>Searching for</h3>' + currentSearch"></section>
   </div>
   `,
 
