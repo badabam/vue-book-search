@@ -2,7 +2,7 @@ var tagButtons = [
   {
     label: 'Author',
     type: 'text',
-    placeholder: 'Tolkien',
+    placeholder: 'Rowling',
     multi: true,
     hint: 'Create another by pressing <code>,</code>'
   },
@@ -15,7 +15,7 @@ var tagButtons = [
   {
     label: 'Publisher',
     type: 'text',
-    placeholder: 'Bastei Lübbe AG'
+    placeholder: 'BoD'
   },
   {
     label: 'Price from',
