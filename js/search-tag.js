@@ -15,6 +15,7 @@ Vue.component('search-tag', {
           @keyup="saveFilterValue"
           @blur="blur"
           @keydown="keydown"
+          @keydown.tab.prevent="submit($event.target.value)"
           @keyup.delete="destroy()"
           @keyup.enter="submit($event.target.value)"
           @keyup.esc="destroy"
@@ -122,7 +123,8 @@ Vue.component('search-tag', {
     },
 
     blur(event) {
-      if(!event.target.value) {
+      if(!this.values) {
+        this.value = event.target.value;
         setTimeout(() => {
           this.editing = false;
           this.destroy();

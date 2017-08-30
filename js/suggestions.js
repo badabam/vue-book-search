@@ -13,7 +13,6 @@ Vue.component('suggestions', {
 
   data() {
     return {
-      items: null,
       currentIndex: 0
     };
   },
