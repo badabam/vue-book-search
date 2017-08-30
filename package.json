@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run styles:build && npm run styles:watch",
-    "styles:watch": "node-sass -w -o css scss/styles.scss",
+    "styles:watch": "node-sass -w scss/styles.scss -o css scss/styles.scss",
     "styles:build": "node-sass -o css scss/styles.scss"
   },
   "dependencies": {

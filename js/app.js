@@ -8,7 +8,7 @@ Vue.component('app', {
       @destroy="destroySearchTag"
       @update="updateInput"
       @move="moveSelection"
-      @search="search"
+      @enter="enter"
       v-bind:inputText="currentInput"
       v-bind:searchTags="searchTags"
     />
@@ -76,13 +76,17 @@ Vue.component('app', {
       this.currentHint = currentTag ? currentTag.hint : data.hint;
     },
 
-    search() {
-      this.currentHint = '';
-      this.searching = true;
-      setTimeout(() => {
-        this.searching = false;
-        this.searchTags = {};
-      }, 2000);
+    enter() {
+      if(this.selectedTagIndex) {
+        this.createSearchTag();
+      } else {
+        this.currentHint = '';
+        this.searching = true;
+        setTimeout(() => {
+          this.searching = false;
+          this.searchTags = {};
+        }, 2000);
+      }
     },
 
     sortTags(value) {

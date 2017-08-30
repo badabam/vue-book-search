@@ -44,29 +44,3 @@ sup {
   top: -8px;
   color: #888;
 }
-
-aside {
-  text-align: center;
-  margin: 80px auto 0;
-  color: #ccc;
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 2.0;
-
-  code {
-    color: #aaa;
-    font-family: monospace;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-    margin: 0 4px;
-    display: inline-block;
-    padding: 2px 3px;
-    border-radius: 3px;
-    vertical-align: middle;
-    line-height: 1;
-
-    &[turned] {
-      transform: rotate(180deg);
-    }
-  }
-}
-

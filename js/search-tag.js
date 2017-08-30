@@ -41,6 +41,7 @@ Vue.component('search-tag', {
       filterValue: null,
       values: null,
       type: null,
+      placeholder: null,
       anyValue: false,
       // jshint ignore:start
       ...this.data

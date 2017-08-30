@@ -4,7 +4,7 @@ var tagButtons = [
     type: 'text',
     placeholder: 'Rowling',
     multi: true,
-    hint: 'Create another by pressing <code>,</code>'
+    hint: 'Add another by pressing <code>,</code>'
   },
   {
     label: 'Release date',
@@ -15,7 +15,8 @@ var tagButtons = [
   {
     label: 'Publisher',
     type: 'text',
-    placeholder: 'BoD'
+    placeholder: 'BoD',
+    hint: 'Enter any value'
   },
   {
     label: 'Product group',
@@ -29,31 +30,34 @@ var tagButtons = [
       '22500',
       '41300',
       '42500'
-    ]
+    ],
+    hint: 'Type any number or choose a value with <code>↑</code> and <code>↓</code>'
   },
   {
     label: 'Price from',
     type: 'price',
-    placeholder: '1.99'
+    placeholder: '1.99',
+    hint: 'Insert any number value'
   },
   {
     label: 'Price to',
     type: 'price',
-    placeholder: '49.99'
+    placeholder: '49.99',
+    hint: 'Insert any number value'
   },
   {
     label: 'Keyword',
     type: 'text',
     placeholder: 'cooking',
     multi: true,
-    hint: 'Create another by pressing <code>,</code>'
+    hint: 'Add another by pressing <code>,</code>'
   },
   {
     label: 'Language',
     type: 'text',
     placeholder: 'german',
     multi: true,
-    hint: 'Create another by pressing <code>,</code>'
+    hint: 'Add another by pressing <code>,</code>'
   },
   {
     label: 'Media',
@@ -68,7 +72,7 @@ var tagButtons = [
       'mp3',
     ],
     multi: true,
-    hint: 'Use <code>↑</code> and <code>↓</code> to move.'
+    hint: 'Choose one of the values by filtering or using <code>↑</code> and <code>↓</code>'
   },
   {
     label: 'ISBN',

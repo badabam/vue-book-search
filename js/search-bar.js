@@ -16,7 +16,7 @@ Vue.component('search-bar', {
           v-bind:inputText="inputText"
           @update="updateInput"
           @submit="submit"
-          @search="$emit('search')"
+          @enter="$emit('enter')"
           @destroy="destroyLast"
           @move="move"
         />

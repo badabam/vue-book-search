@@ -36,7 +36,7 @@ Vue.component('fulltext-input', {
             label: 'Text search'
           });
         } else {
-          this.$emit('search');
+          this.$emit('enter');
         }
         this.currentText = null;
       },
