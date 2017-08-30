@@ -32,8 +32,8 @@ Vue.component('suggestions', {
   },
 
   methods: {
-    move(step) {
-      if (step == null) {
+    move(y) {
+      if (y == null) {
        this.currentIndex = null;
        return;
       }
@@ -43,7 +43,7 @@ Vue.component('suggestions', {
         return;
       }
 
-      const newPosition = this.currentIndex + step;
+      const newPosition = this.currentIndex + y;
       if (newPosition >= 0 && newPosition <= this.currentItems.length - 1) {
         this.currentIndex = newPosition;
       } else {

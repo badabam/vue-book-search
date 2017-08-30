@@ -113,18 +113,18 @@ Vue.component('app', {
       this.currentInput = value;
     },
 
-    moveSelection(step) {
-      if (step == null) {
+    moveSelection(x, y) {
+      if (x == null) {
         this.selectedTagIndex = null;
         return;
       }
 
-      if(step === 1 && this.selectedTagIndex == null) {
+      if(x === 1 && this.selectedTagIndex == null) {
         this.selectedTagIndex = 0;
         return;
       }
 
-      const newSelection = this.selectedTagIndex + step;
+      const newSelection = this.selectedTagIndex + x;
       if (newSelection > this.currentTags.length - 1) {
         this.selectedTagIndex = 0;
       } else if (newSelection < 0) {

@@ -36,8 +36,8 @@ Vue.component('search-bar', {
         this.$emit('editingDone', data);
       },
 
-      move(step) {
-        this.$emit('move', step);
+      move(x, y) {
+        this.$emit('move', x, y);
       },
 
       updateInput(value) {

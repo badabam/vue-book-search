@@ -14,6 +14,8 @@ Vue.component('fulltext-input', {
       @keyup.delete="destroy"
       @keyup.right="move(1)"
       @keyup.left="move(-1)"
+      @keyup.up="move(0, -1)"
+      @keyup.down="move(0, 1)"
       @keyup.esc="move(null)"
     >
     `,
@@ -41,8 +43,8 @@ Vue.component('fulltext-input', {
         this.currentText = null;
       },
 
-      move(step) {
-        this.$emit('move', step);
+      move(x, y) {
+        this.$emit('move', x, y);
       },
 
       updateValue(value) {

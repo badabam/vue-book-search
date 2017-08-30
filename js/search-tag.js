@@ -20,8 +20,8 @@ Vue.component('search-tag', {
           @keyup.delete="destroy()"
           @keyup.enter="submit($event.target.value)"
           @keyup.esc="destroy"
-          @keyup.up="move(-1)"
-          @keyup.down="move(1)"
+          @keyup.up="move(0, -1)"
+          @keyup.down="move(0, 1)"
           >
           <suggestions
             ref="suggestions"
@@ -121,8 +121,8 @@ Vue.component('search-tag', {
       this.interimValue = event.target.value;
     },
 
-    move(step) {
-      this.$refs && this.$refs.suggestions.move(step);
+    move(x, y) {
+      this.$refs && this.$refs.suggestions.move(y);
     },
 
     checkMulti(event) {
