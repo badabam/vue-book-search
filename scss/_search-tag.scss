@@ -1,17 +1,18 @@
 .search-tag {
   padding: 4px 8px;
   margin-right: 10px;
-  background: #666;
-  color: $white;
+  color: #333;
   display: flex;
   border-radius: 4px;
-  font-weight: bold;
   overflow: hidden;
   flex-shrink: 1;
   white-space: nowrap;
   position: relative;
+  background: #eee;
+  border: 1px solid #ddd;
 
   &.editing {
+    background: #eee;
     flex-shrink: 0;
   }
 
@@ -28,17 +29,15 @@
     border-bottom: 1px solid $white;
     height: 100%;
     width: 140px;
-    padding-right: 10px;
-    margin-right: 10px;
+    // padding-right: 10px;
     font-weight: bold;
-    color: $white;
+    color: #555;
     flex-shrink: 0;
     align-self: center;
     position: relative;
     z-index: 1;
 
     &::placeholder {
-      color: $white;
       font-weight: 200;
       opacity: 0.6;
     }
@@ -53,10 +52,11 @@
     text-overflow: ellipsis;
     overflow: hidden;
     margin-right: 5px;
+  }
 
-    .editing & {
-      opacity: 0.2;
-    }
+  .value {
+    font-weight: bold;
+    letter-spacing: 0.6px;
   }
 
   .suffix {

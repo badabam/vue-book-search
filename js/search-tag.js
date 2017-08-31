@@ -30,7 +30,7 @@ Vue.component('search-tag', {
           >
           <suggestions
             ref="suggestions"
-            v-if="values && editing"
+            v-show="values && editing"
             v-bind:items="values"
             v-bind:filter="filterValue"
             v-bind:startIndex="this.anyValue ? null : 0"

@@ -1,6 +1,6 @@
 .suggestions {
   position: fixed;
-  min-width: 158px;
+  min-width: 148px;
   z-index: 0;
   background: inherit;
   font-weight: normal;
@@ -13,17 +13,19 @@
 }
 
 .suggestions__item:not(:last-child) {
-  border-bottom: 1px solid rgba($white, 0.4);
+  border-bottom: 1px solid #ccc;
   border-radius: 0;
 }
 
 .suggestions__item {
-  padding: 3px 10px 3px 7px;
+  padding: 3px 10px;
   border-radius: 0 0 6px 6px;
 
 
   &:hover,
   &.selected {
-    background: #999;
+    background: $orange;
+    color: $white;
+    margin: -1 0;
   }
 }
