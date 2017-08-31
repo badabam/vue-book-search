@@ -1,6 +1,11 @@
 Vue.component('hintbar', {
   template: `
-  <div class="hintbar" v-html="text"></div>
+  <div class="hintbar" v-html="htmlText"></div>
   `,
-  props: ['text']
+  props: ['text'],
+  computed: {
+    htmlText() {
+      return 'Hint: ' + this.text;
+    }
+  }
 });

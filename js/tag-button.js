@@ -4,7 +4,7 @@ Vue.component('tag-button', {
     class="tag-button"
     v-bind:class="{
       selected: selected,
-      highlight: hasHighlight,
+      highlight: doFilter && hasHighlight,
       low: doFilter && !hasHighlight
     }"
     @click="onClick"
@@ -27,7 +27,7 @@ Vue.component('tag-button', {
       }
     },
     hasHighlight() {
-      return this.vm.label.indexOf(this.highlight) === 0;
+      return this.highlight && this.vm.label.indexOf(this.highlight) === 0;
     }
   },
   methods: {

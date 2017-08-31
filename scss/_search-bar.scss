@@ -1,6 +1,6 @@
 .search-bar {
   display: flex;
-  margin: 35px 20px 10px;
+  margin: 25px 20px 10px;
   border: 3px solid #eee;
   border-radius: 4px;
   position: relative;
@@ -11,12 +11,12 @@
   border: none;
   background: $orange;
   color: $white;
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 3px 3px 0;
   cursor: pointer;
   font-size: 18px;
   transition: all 0.1s ease;
   margin-left: auto;
-  padding: 0 20px;
+  padding: 0 15px;
 
   &:hover {
     background: lighten($orange, 5%);

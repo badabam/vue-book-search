@@ -1,11 +1,13 @@
 .suggestions {
   position: fixed;
-  min-width: 148px;
+  min-width: 149px;
   z-index: 0;
   background: inherit;
   font-weight: normal;
   padding: 0;
   border-radius: 0 0 6px 6px;
+  border: 1px solid #ddd;
+  border-top-color: transparent;
 
   &:empty {
     display: none;
@@ -24,8 +26,7 @@
 
   &:hover,
   &.selected {
-    background: $orange;
+    background: #999;
     color: $white;
-    margin: -1 0;
   }
 }
