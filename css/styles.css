@@ -420,7 +420,7 @@ sup {
   background: #666;
   color: #fefefe;
   display: flex;
-  border-radius: 2px;
+  border-radius: 4px;
   font-weight: bold;
   overflow: hidden;
   flex-shrink: 1;
@@ -543,5 +543,3 @@ sup {
     background: #777; }
   .tag-button.low {
     opacity: 0.6; }
-  .tag-button strong {
-    background: #eee; }
