@@ -21,7 +21,9 @@ Vue.component('search-bar', {
           @move="move"
         />
       </div>
-      <button @click="$emit('search')" class="search-bar__button" type="submit">Search</button>
+      <button @click="$emit('search')" class="search-bar__button" type="submit">
+      <img src="img/icon-search.svg">
+      </button>
     </section>
     `,
     props: ['searchTags', 'inputText'],

@@ -4,6 +4,7 @@ Vue.component('fulltext-input', {
       class="fulltext-input"
       ref="input"
       type="text"
+      placeholder="Write here ..."
       v-bind:value="inputText"
       @input="updateValue($event.target.value)"
       @keydown="saveText($event.target.value)"

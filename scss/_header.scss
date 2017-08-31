@@ -1,0 +1,54 @@
+.header {
+  font-family: 'Roboto Condensed', sans-serif;
+  color: $white;
+  height: 50px;
+  background: $darkblue;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    height: 100%;
+    width: auto;
+  }
+
+  .links {
+    margin: -5px;
+    display: flex;
+  }
+
+  .links a {
+    padding: 10px 10px;
+    margin: 0 10px;
+    cursor: pointer;
+    letter-spacing: 0.2px;
+
+    &.selected {
+      border-bottom: 5px solid $orange;
+    }
+  }
+
+  .login {
+    a {
+      margin-right: 10px;
+    }
+  }
+
+  .head {
+    display: inline-block;
+    background: $blue;
+    border-radius: 50%;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+}

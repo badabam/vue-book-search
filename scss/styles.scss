@@ -4,8 +4,11 @@
 @import '../node_modules/bootstrap/scss/variables';
 @import '../node_modules/bootstrap/scss/reboot';
 
+@import 'colors';
 @import 'base';
+@import 'fulltext-input';
 @import 'generic';
+@import 'header';
 @import 'hintbar';
 @import 'instructions';
 @import 'search-bar';

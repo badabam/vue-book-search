@@ -5,14 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Search Prototype</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div id="app">
+  <header class="header">
+    <img class="logo" src="img/logo.png" alt="Libri">
+    <div class="links">
+      <a class="selected">Bibliografie</a>
+      <a>Warenkörbe</a>
+    </div>
+    <div class="login">
+      <a>Thomas</a>
+      <img class="head" src="img/icon-doerte.svg" alt="">
+    </div>
+  </header>
+  <main id="app">
     <app></app>
-  </div>
+  </main>
   <aside class="instructions">
-    Move selection with tab (<code>⇥</code>) or arrow keys (<code>←</code>, <code turned>←</code>).<br>
+    Move selection with tab (<code>⇥</code>) or arrow keys (<code>←</code>, <code><div turned>←</div></code>).<br>
     Press <code>↵</code> to create a tag.<br>
     Try writing <code>Pr</code>, then use <code>⇥</code> to select.<br>
     Delete a tag with <code>⌫</code>.<br>

@@ -1,10 +1,14 @@
 Vue.component('search-tag', {
   template: `
-    <div class="search-tag" v-bind:class="{error: hasError, editing: editing}">
+    <div class="search-tag" v-bind:class="{
+      error: hasError,
+      editing: editing,
+      'show-suggestions': values && editing
+    }">
       <span @click="click" class="prefix">{{label}}: </span>
       <span @click="click" class="value" v-if="!editing">{{value}}</span>
       <span @click="destroy(true)" class="suffix" v-if="!editing">&times;</span>
-      <div className="wrapper">
+      <div class="search-tag__wrapper">
         <input
           class="search-tag__input"
           ref="input"
@@ -12,6 +16,7 @@ Vue.component('search-tag', {
           v-if="editing"
           v-model="value"
           v-bind:placeholder="placeholder"
+          v-bind:class="{}"
           v-bind:style="inputStyles"
           @keyup="saveFilterValue"
           @blur="blur"
@@ -69,7 +74,6 @@ Vue.component('search-tag', {
       }
 
       const suggestions = this.$refs && this.$refs.suggestions;
-      console.log('submit', value, this.values, suggestions && suggestions.currentItem, this.anyValue);
 
       if (this.values) {
         if (this.values.indexOf(value) !== -1) {
@@ -170,7 +174,13 @@ Vue.component('search-tag', {
     getFormatOptions(type) {
       switch(this.type) {
         case 'isbn': return {blocks: [3, 1, 5, 3, 1], delimiter: '-'};
-        case 'price': return {numeral: true, numeralDecimalMark: ',', delimiter: '.', prefix: '€ '};
+        case 'price': return {
+          numeral: true,
+          numeralDecimalMark: ',',
+          delimiter: '.',
+          prefix: '€ ',
+          numeralDecimalScale: 2
+        };
         default: return null;
       }
     },

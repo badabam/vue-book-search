@@ -1,7 +1,7 @@
 .search-bar {
   display: flex;
   margin: 35px 20px 10px;
-  border: 6px solid #eee;
+  border: 3px solid #eee;
   border-radius: 4px;
   position: relative;
   z-index: 1;
@@ -9,23 +9,23 @@
 
 .search-bar__button {
   border: none;
-  background: coral;
-  color: white;
-  border-radius: 0 3px 3px 0;
+  background: $orange;
+  color: $white;
+  border-radius: 0 2px 2px 0;
   cursor: pointer;
   font-size: 18px;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
   margin-left: auto;
   padding: 0 20px;
 
   &:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    background: darken(coral, 5%);
+    background: lighten($orange, 5%);
+    box-shadow: 0 0 4px lighten($orange, 30%);
   }
 
   &:active {
     transition: background 0.1s ease;
-    background: lighten(coral, 4%);
+    background: lighten($orange, 4%);
   }
 
   &:focus {

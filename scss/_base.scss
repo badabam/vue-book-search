@@ -3,16 +3,24 @@
 }
 
 html {
-  background: cornflowerblue;
-  padding: 20px;
+  background-image: url(../img/background.png);
+  background-size: cover;
   font-size: 16px;
   font-weight: normal;
   height: 100vh;
 }
 
 body {
+  background: transparent;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  color: #333;
+}
+
+main {
   height: 100%;
-  background: #fefefe;
+  margin: 20px;
+  background-color: $white;
   box-shadow: 1px 1px 6px rgba(black, 0.2);
   overflow: auto;
   display: flex;
