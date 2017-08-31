@@ -33,6 +33,8 @@ Vue.component('app', {
       currentInput: '',
       searchTags: {},
       nextSearchTodoId: 0,
+      tagRowSelected: true,
+      selectedSearchTagIndex: null,
       selectedTagIndex: null,
       currentHint: null,
       searching: false
@@ -114,6 +116,16 @@ Vue.component('app', {
     },
 
     moveSelection(x, y) {
+      if (y) {
+        this.tagRowSelected = !this.tagRowSelected;
+        return;
+      }
+
+      if (this.tagRowSelected) {
+
+      }
+
+
       if (x == null) {
         this.selectedTagIndex = null;
         return;

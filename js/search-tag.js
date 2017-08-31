@@ -2,7 +2,7 @@ Vue.component('search-tag', {
   template: `
     <div class="search-tag" v-bind:class="{error: hasError, editing: editing}">
       <span @click="click" class="prefix">{{label}}: </span>
-      <span @click="click" class="value" v-if="!editing">{{price(value, type)}}</span>
+      <span @click="click" class="value" v-if="!editing">{{value}}</span>
       <span @click="destroy(true)" class="suffix" v-if="!editing">&times;</span>
       <div className="wrapper">
         <input
@@ -170,6 +170,7 @@ Vue.component('search-tag', {
     getFormatOptions(type) {
       switch(this.type) {
         case 'isbn': return {blocks: [3, 1, 5, 3, 1], delimiter: '-'};
+        case 'price': return {numeral: true, numeralDecimalMark: ',', delimiter: '.', prefix: '€ '};
         default: return null;
       }
     },

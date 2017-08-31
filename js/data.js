@@ -37,13 +37,13 @@ var tagButtons = [
   {
     label: 'Price from',
     type: 'price',
-    placeholder: '1.99',
+    placeholder: '€ 1,99',
     hint: 'Insert any number value'
   },
   {
     label: 'Price to',
     type: 'price',
-    placeholder: '49.99',
+    placeholder: '€ 149,00',
     hint: 'Insert any number value'
   },
   {
@@ -58,7 +58,16 @@ var tagButtons = [
     type: 'text',
     placeholder: 'german',
     multi: true,
-    hint: 'Add another by pressing <code>,</code> or <code>+</code>'
+    anyValue: true,
+    values: [
+      'german',
+      'english',
+      'french',
+      'italian',
+      'russian',
+      'spanish'
+    ],
+    hint: 'Any value is allowed. Add another by pressing <code>,</code> or <code>+</code>'
   },
   {
     label: 'Media',
@@ -79,7 +88,6 @@ var tagButtons = [
     label: 'ISBN',
     type: 'isbn',
     placeholder: 'xxx-x-xxx-xxxxx-x',
-    hint: 'Number-formatting is not yet implemented.',
     size: 180
   },
 ];

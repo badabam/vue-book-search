@@ -4,9 +4,8 @@
   color: #ccc;
   font-weight: bold;
   font-size: 22px;
-  line-height: 2.0;
-
-  code {
+  line-height: 2.0; }
+  .instructions code {
     color: #aaa;
     font-family: monospace;
     background: #f8f9fa;
@@ -16,10 +15,6 @@
     padding: 2px 3px;
     border-radius: 3px;
     vertical-align: middle;
-    line-height: 1;
-
-    &[turned] {
-      transform: rotate(180deg);
-    }
-  }
-}
+    line-height: 1; }
+    .instructions code[turned] {
+      transform: rotate(180deg); }
