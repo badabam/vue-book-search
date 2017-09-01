@@ -5,7 +5,7 @@ Vue.component('hintbar', {
   props: ['text'],
   computed: {
     htmlText() {
-      return 'Hint: ' + this.text;
+      return i18n.hintbar.prefix + this.text;
     }
   }
 });

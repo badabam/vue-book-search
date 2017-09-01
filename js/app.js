@@ -22,12 +22,13 @@ Vue.component('app', {
         v-bind:doFilter="someHighlight"
         v-bind:key="data.label" />
     </section>
-    <section class="searching" v-if="searching && Object.keys(searchTags).length" v-html="'<h3>Searching for</h3>' + currentSearch"></section>
+    <section class="searching" v-if="searching && Object.keys(searchTags).length" v-html="i18n.searching.heading + currentSearch"></section>
   </div>
   `,
 
   data() {
     return {
+      i18n: i18n,
       currentTags: tagButtons,
       tagButtons: tagButtons,
       currentInput: '',
@@ -155,7 +156,9 @@ Vue.component('app', {
       this.currentHint = '';
       Object.keys(this.searchTags).forEach(key => {
         const tag = this.searchTags[key];
-        Vue.set(this.searchTags, key, (tag.id === data.id) ? {...tag, value: data.value} : tag);
+        Vue.set(this.searchTags, key, (tag.id === data.id)
+        ? Object.assign({}, tag, {value: data.value})
+        : tag);
       });
     }
   }

@@ -5,34 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Search Prototype</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed:400" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="header">
-    <img class="logo" src="img/logo.png" alt="Libri">
-    <div class="links">
-      <a class="selected">Bibliografie</a>
-      <a>Warenkörbe</a>
-    </div>
-    <div class="login">
-      <a>Thomas</a>
-      <img class="head" src="img/icon-doerte.svg" alt="">
-    </div>
-  </header>
+  <app-header></app-header>
   <main id="app">
     <app></app>
   </main>
-  <aside class="instructions">
-    Move selection with tab (<code>⇥</code>) or arrow keys (<code>←</code>, <code><div turned>←</div></code>).<br>
-    Press <code>↵</code> to create a tag.<br>
-    Try writing <code>Pr</code>, then use <code>⇥</code> to select.<br>
-    Delete a tag with <code>⌫</code>.<br>
-  </aside>
+  <app-instructions></app-instructions>
   <script src="vendor/vue.js"></script>
   <script src="vendor/cleave.min.js"></script>
-  <script src="js/app.js"></script>
+
   <script src="js/data.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/app-header.js"></script>
+  <script src="js/app-instructions.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/fulltext-input.js"></script>
   <script src="js/hintbar.js"></script>

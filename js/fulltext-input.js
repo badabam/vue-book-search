@@ -4,7 +4,7 @@ Vue.component('fulltext-input', {
       class="fulltext-input"
       ref="input"
       type="text"
-      placeholder="Write here ..."
+      v-bind:placeholder="i18n.fulltext.placeholder"
       v-bind:value="inputText"
       @input="updateValue($event.target.value)"
       @keydown="saveText($event.target.value)"
@@ -23,6 +23,7 @@ Vue.component('fulltext-input', {
     props: ['inputText'],
     data() {
       return {
+        i18n: i18n,
         savedText: null,
       };
     },
@@ -36,7 +37,7 @@ Vue.component('fulltext-input', {
         if (event.target.value) {
           this.$emit('submit', {
             value: event.target.value,
-            label: 'Text search'
+            label: this.i18n.fulltext.label
           });
         } else {
           this.$emit('enter');

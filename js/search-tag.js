@@ -30,7 +30,7 @@ Vue.component('search-tag', {
           >
           <suggestions
             ref="suggestions"
-            v-show="values && editing"
+            v-if="values && editing"
             v-bind:items="values"
             v-bind:filter="filterValue"
             v-bind:startIndex="this.anyValue ? null : 0"
@@ -41,19 +41,19 @@ Vue.component('search-tag', {
   `,
   props: ['data'],
   data() {
-    return {
-      editing: !this.data.value,
-      interimValue: null,
-      filterValue: null,
-      values: null,
-      type: null,
-      placeholder: null,
-      anyValue: false,
-      size: null,
-      // jshint ignore:start
-      ...this.data
-      // jshint ignore:end
-    };
+    return Object.assign({},
+      {
+        editing: !this.data.value,
+        interimValue: null,
+        filterValue: null,
+        values: null,
+        type: null,
+        placeholder: null,
+        anyValue: false,
+        size: null
+      },
+      this.data
+    );
   },
   computed: {
     hasError() {
@@ -101,7 +101,7 @@ Vue.component('search-tag', {
     },
 
     stopEditing(value) {
-      this.value = value.trim();
+      this.value = value && value.trim();
       this.editing = false;
       this.$emit('editingDone', {id: this.id, value: this.value});
     },
@@ -148,11 +148,9 @@ Vue.component('search-tag', {
     },
 
     blur(event) {
-      // const value = event.target.value;
       const suggestions = this.$refs && this.$refs.suggestions;
       const value = this.values && suggestions ? suggestions.currentItem : event.target.value;
       setTimeout(() => this.submit(value), 100);
-      // this.submit(value);
     },
 
     click(event) {
@@ -181,6 +179,11 @@ Vue.component('search-tag', {
           prefix: '€ ',
           numeralDecimalScale: 2
         };
+        case 'date': return {
+          blocks: [1, 2, 4],
+          delimiters: [' ', '.'],
+          value: '= '
+        };
         default: return null;
       }
     },
@@ -192,6 +195,7 @@ Vue.component('search-tag', {
     const format = this.getFormatOptions(this.type);
     if (format) {
       new Cleave('.search-tag__input', format);
+      this.value = format.value || this.value;
     }
   }
 });

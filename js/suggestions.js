@@ -13,7 +13,7 @@ Vue.component('suggestions', {
 
   data() {
     return {
-      currentIndex: this.startIndex
+      currentIndex: this.startIndex,
     };
   },
 
