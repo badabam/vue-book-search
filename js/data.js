@@ -125,7 +125,7 @@ const locale = (function() {
         },
         fulltext: {
           placeholder: 'Hier schreiben ...',
-          label: 'Freitext'
+          label: 'Textsuche'
         },
         hintbar: {
           prefix: 'Tipp: '

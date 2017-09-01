@@ -22,7 +22,7 @@
 .suggestions__item {
   padding: 3px 10px;
   border-radius: 0 0 6px 6px;
-
+  cursor: pointer;
 
   &:hover,
   &.selected {

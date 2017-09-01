@@ -523,7 +523,8 @@ sup {
 
 .suggestions__item {
   padding: 3px 10px;
-  border-radius: 0 0 6px 6px; }
+  border-radius: 0 0 6px 6px;
+  cursor: pointer; }
   .suggestions__item:hover, .suggestions__item.selected {
     background: #999;
     color: #fefefe; }
