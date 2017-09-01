@@ -176,12 +176,14 @@ const locale = (function() {
         {
           label: 'Preis von',
           type: 'price',
-          placeholder: '€ 1,99'
+          placeholder: '€ 1,99',
+          hint: 'Nur Zahlenwerte sind erlaubt.'
         },
         {
           label: 'Preis bis',
           type: 'price',
-          placeholder: '€ 149,00'
+          placeholder: '€ 149,00',
+          hint: 'Nur Zahlenwerte sind erlaubt.'
         },
         {
           label: 'Stichwort',
@@ -209,7 +211,7 @@ const locale = (function() {
         {
           label: 'Format',
           type: 'text',
-          placeholder: 'Neuheiten',
+          placeholder: 'Bitte wählen ↓',
           values: [
           'Taschenbuch',
           'Audio/Video',
@@ -225,7 +227,7 @@ const locale = (function() {
           'aktive Titel'
           ],
           multi: true,
-          hint: 'Choose one of the values by filtering or using <code>↑</code> and <code>↓</code>'
+          hint: 'Vorgeschlagene Werte mit <code>↑</code> and <code>↓</code> auswählen. Keine freie Eingabe möglich'
         },
         {
           label: 'EAN',

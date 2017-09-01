@@ -15,7 +15,7 @@ Vue.component('app', {
     <section class="tag-buttons">
       <tag-button
         v-for="(data, index) in currentTags"
-        @click="createSearchTag"
+        @click="click"
         v-bind:initialData="data"
         v-bind:selected="index === selectedTagIndex"
         v-bind:highlight="currentInput"
@@ -77,6 +77,10 @@ Vue.component('app', {
       Vue.set(this.searchTags, newTag.id, newTag);
       if (currentTag) this.selectedTagIndex = null;
       this.currentHint = currentTag ? currentTag.hint : data.hint;
+    },
+
+    click(data) {
+      this.createSearchTag(data);
     },
 
     enter() {
@@ -148,6 +152,7 @@ Vue.component('app', {
     },
 
     destroySearchTag(id) {
+      console.log('destroy', id, this.searchTags[id]);
       Vue.delete(this.searchTags, id);
       this.currentHint = '';
     },

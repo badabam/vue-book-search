@@ -33,7 +33,7 @@ Vue.component('search-tag', {
             v-if="values && editing"
             v-bind:items="values"
             v-bind:filter="filterValue"
-            v-bind:startIndex="this.anyValue ? null : 0"
+            v-bind:startIndex="null"
             @submit="submit"
           />
       </div>
@@ -57,12 +57,18 @@ Vue.component('search-tag', {
   },
   computed: {
     hasError() {
-      const result = this.type === 'price' && this.value && !/\d+/.test(this.value);
+      const result = this.type === 'price' && this.rawValue && !/\d+/.test(this.rawValue);
       return result;
     },
 
     inputStyles() {
       return this.size ? {width: `${this.size}px`} : {};
+    },
+
+    rawValue() {
+      const raw = this.value ? this.value.replace(/[€=<>]\s?/gi, '') : '';
+      console.log('raw', raw);
+      return raw;
     }
   },
   methods: {
@@ -107,7 +113,7 @@ Vue.component('search-tag', {
     },
 
     destroy(force) {
-      if(!this.value && !this.interimValue || force) {
+      if(force || (!this.rawValue && !this.interimValue) ) {
         this.$emit('destroy', this.id);
       }
     },
@@ -126,7 +132,7 @@ Vue.component('search-tag', {
     },
 
     move(x, y) {
-      this.$refs && this.$refs.suggestions.move(y);
+      this.$refs && this.$refs.suggestions && this.$refs.suggestions.move(y);
     },
 
     checkMulti(event) {
@@ -149,8 +155,15 @@ Vue.component('search-tag', {
 
     blur(event) {
       const suggestions = this.$refs && this.$refs.suggestions;
-      const value = this.values && suggestions ? suggestions.currentItem : event.target.value;
-      setTimeout(() => this.submit(value), 100);
+      this.value = this.values && suggestions ? suggestions.currentItem || event.target.value : event.target.value;
+      console.log('search-tag:blur', !this.rawValue);
+      if (!this.rawValue) {
+        this.destroy(true);
+        console.log('blur:destroy', this.id, this.value);
+      } else {
+        console.log('blur:submit', this.id, this.value);
+        setTimeout(() => this.submit(this.value), 100);
+      }
     },
 
     click(event) {
