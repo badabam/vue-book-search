@@ -385,6 +385,14 @@ sup {
     line-height: 1; }
     .instructions code [turned] {
       transform: rotate(180deg) translateY(2px); }
+  .instructions cite {
+    color: #666;
+    font-weight: normal;
+    font-style: normal;
+    background: lightyellow;
+    padding: 2px 4px;
+    margin: 0 4px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
 
 .search-bar {
   display: flex;

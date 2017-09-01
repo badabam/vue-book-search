@@ -134,7 +134,7 @@ const locale = (function() {
           htmlText: `
           Auswahl mit Tab (<code>⇥</code>) oder Pfeiltasten (<code>←</code>, <code><div turned>←</div></code>).<br>
           Mit <code>↵</code> Suchbegriff erzeugen.<br>
-          Schreibe <code>Pr</code> und drücke <code>⇥</code>, um Kategorie zu wählen.<br>
+          Schreibe <cite>"Pr"</cite> und drücke <code>⇥</code>, um Kategorie zu wählen.<br>
           Lösche Einträge mit <code>⌫</code>.
           `
         }
