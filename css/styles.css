@@ -372,6 +372,12 @@ sup {
   padding: 40px;
   width: 670px;
   border-radius: 20px; }
+  .instructions:hover {
+    opacity: 1 !important;
+    transition: opacity 0.4s ease !important; }
+  .instructions.fadeout {
+    opacity: 0.3;
+    transition: opacity 2s 5s ease; }
   .instructions code {
     color: #aaa;
     font-family: monospace;
@@ -389,6 +395,7 @@ sup {
     color: #666;
     font-weight: normal;
     font-style: normal;
+    font-size: 0.8em;
     background: lightyellow;
     padding: 2px 4px;
     margin: 0 4px;
