@@ -357,6 +357,7 @@ sup {
     margin: 0 4px;
     line-height: 0.8;
     background: lightyellow;
+    font-style: normal;
     color: #666; }
     .hintbar code:before, .hintbar code:after {
       content: '"'; }

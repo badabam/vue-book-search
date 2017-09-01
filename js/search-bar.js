@@ -33,8 +33,8 @@ Vue.component('search-bar', {
       },
 
       editingDone(data) {
-        const target = this.$refs.fulltextInput.$el;
-        target && target.focus();
+        const fulltextInput = this.$refs && this.$refs.fulltextInput.$el;
+        fulltextInput && fulltextInput.focus();
         this.$emit('editingDone', data);
       },
 

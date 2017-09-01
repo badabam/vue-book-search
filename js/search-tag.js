@@ -35,6 +35,7 @@ Vue.component('search-tag', {
             v-bind:filter="filterValue"
             v-bind:startIndex="null"
             @submit="submit"
+            @click="suggestionsClick"
           />
       </div>
     </div>
@@ -75,6 +76,7 @@ Vue.component('search-tag', {
     price: price,
 
     submit(value) {
+      console.log('submit', value);
       if (this.hasError || !this.editing) {
         return false; // early out
       }
@@ -106,6 +108,12 @@ Vue.component('search-tag', {
       }
     },
 
+    suggestionsClick(value) {
+      console.log('suggestionsClick');
+      this.editing = false;
+      this.stopEditing(value);
+    },
+
     stopEditing(value) {
       this.value = value && value.trim();
       this.editing = false;
@@ -113,7 +121,7 @@ Vue.component('search-tag', {
     },
 
     destroy(force) {
-      if(force || (!this.rawValue && !this.interimValue) ) {
+      if(this.editing && (force || !this.rawValue && !this.interimValue) ) {
         this.$emit('destroy', this.id);
       }
     },
@@ -156,12 +164,17 @@ Vue.component('search-tag', {
     blur(event) {
       const suggestions = this.$refs && this.$refs.suggestions;
       this.value = this.values && suggestions ? suggestions.currentItem || event.target.value : event.target.value;
-      console.log('search-tag:blur', !this.rawValue);
+      console.log('search-tag:blur', !this.rawValue, this.value, suggestions && suggestions.currentItem);
+      // this.afterBlur(event);
+      setTimeout(() => this.afterBlur(event), 100);
+    },
+
+    afterBlur(event) {
       if (!this.rawValue) {
         this.destroy(true);
-        console.log('blur:destroy', this.id, this.value);
+        console.log('afterBlur:destroy', this.id, this.value);
       } else {
-        console.log('blur:submit', this.id, this.value);
+        console.log('afterBlur:submit', this.id, this.value);
         setTimeout(() => this.submit(this.value), 100);
       }
     },

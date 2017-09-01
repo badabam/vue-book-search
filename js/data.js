@@ -150,8 +150,8 @@ const locale = (function() {
         {
           label: 'Erscheinungsdatum',
           type: 'date',
-          placeholder: '> 10.2015',
-          hint: '<code>= 03.2012</code> = nur März 2012, <code>&lt; 2014</code> = vor Januar 2014, <code>&gt; 08.2016</code> = ab 1. August 2016'
+          placeholder: '= 10.2015',
+          hint: '<code>= 03.2012</code> = nur März 2012, <code>&lt; 01.2014</code> = vor Januar 2014, <code>&gt; 08.2016</code> = ab 1. August 2016'
         },
         {
           label: 'Verlag',

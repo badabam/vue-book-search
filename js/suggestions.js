@@ -64,7 +64,7 @@ Vue.component('suggestions', {
 
     click(index) {
       this.currentIndex = index;
-      this.submit();
+      this.$emit('click', this.currentItem);
     }
   }
 });

@@ -1,6 +1,7 @@
 Vue.component('app', {
   template: `
   <div>
+    <div @click="$store.commit('increment')" @mouseover="$store.dispatch('lateIncrement')">{{count}}|{{tenCount}}</div>
     <hintbar v-if="currentHint" v-bind:text="currentHint"/>
     <search-bar
       @submit="createSearchTag"
@@ -43,6 +44,8 @@ Vue.component('app', {
   },
 
   computed: {
+    ...Vuex.mapState(['count']),
+    ...Vuex.mapGetters(['tenCount']),
     someHighlight() {
       return this.currentInput && this.currentTags.some( tag => tag.label.indexOf(this.currentInput) === 0);
     },
@@ -61,6 +64,8 @@ Vue.component('app', {
   },
 
   methods: {
+    ...Vuex.mapMutations(['increment']),
+    ...Vuex.mapActions(['lateIncrement']),
     createSearchTag(data) {
       let currentTag;
       if (this.selectedTagIndex != null) {
@@ -127,7 +132,7 @@ Vue.component('app', {
       }
 
       if (this.tagRowSelected) {
-
+        // TODO: implement later
       }
 
 
