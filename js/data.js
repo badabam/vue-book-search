@@ -124,7 +124,7 @@ const locale = (function() {
           heading: '<h3>Suche nach</h3>'
         },
         fulltext: {
-          placeholder: 'Hier schreiben ...',
+          placeholder: 'Suchbegriff ...',
           label: 'Textsuche'
         },
         hintbar: {
