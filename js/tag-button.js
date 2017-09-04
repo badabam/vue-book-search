@@ -19,7 +19,6 @@ Vue.component('tag-button', {
   },
   computed: {
     htmlText() {
-      console.log('htmlText: hasHighlight', this.vm.label);
       if (this.highlight && this.hasHighlight) {
         const marked = this.vm.label.slice(0, this.highlight.length);
         const rest = this.vm.label.slice(this.highlight.length);

@@ -26,8 +26,12 @@ Vue.component('suggestions', {
       return this.currentItems[this.currentIndex];
     },
 
+    lowercaseFilter() {
+      return this.filter && this.filter.toLowerCase();
+    },
+
     currentItems() {
-      return this.filter ? this.items.filter(x => x.indexOf(this.filter) === 0) : this.items;
+      return this.filter ? this.items.filter(x => x.toLowerCase().indexOf(this.lowercaseFilter) === 0) : this.items;
     }
   },
 
