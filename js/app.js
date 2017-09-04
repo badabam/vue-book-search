@@ -44,7 +44,7 @@ Vue.component('app', {
 
   computed: {
     someHighlight() {
-      return this.currentInput && this.currentTags.some( tag => tag.label.toLowerCase().indexOf(this.currentInput) === 0);
+      return this.currentInput && this.currentTags.some( tag => tag.label.toLowerCase().indexOf(this.currentInput.toLowerCase() === 0));
     },
 
     currentSearch() {

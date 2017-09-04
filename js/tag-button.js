@@ -27,13 +27,16 @@ Vue.component('tag-button', {
         return `<span>${this.vm.label}</span>`;
       }
     },
+
     hasHighlight() {
       return this.highlight && this.lowercaseValue.indexOf(this.highlight.toLowerCase()) === 0;
     },
+
     lowercaseValue() {
       return this.vm.label.toLowerCase();
     }
   },
+
   methods: {
     onClick() {
       this.$emit('click', this.vm);
