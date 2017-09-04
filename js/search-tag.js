@@ -72,7 +72,6 @@ Vue.component('search-tag', {
     }
   },
   methods: {
-    price: price,
     setTimeout: setTimeout.bind(null),
 
     submit(value) {
