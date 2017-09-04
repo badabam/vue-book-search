@@ -118,7 +118,7 @@ Vue.component('search-tag', {
     },
 
     destroy(force) {
-      if(this.editing && (force || !this.rawValue && !this.interimValue) ) {
+      if (force || (this.editing && (!this.rawValue && !this.interimValue) )) {
         this.$emit('destroy', this.id);
       }
     },
