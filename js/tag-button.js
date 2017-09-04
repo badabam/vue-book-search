@@ -19,15 +19,20 @@ Vue.component('tag-button', {
   },
   computed: {
     htmlText() {
+      console.log('htmlText: hasHighlight', this.vm.label);
       if (this.highlight && this.hasHighlight) {
-        const rest = this.vm.label.split(this.highlight)[1];
-        return `<strong>${this.highlight}</strong>${rest}`;
+        const marked = this.vm.label.slice(0, this.highlight.length);
+        const rest = this.vm.label.slice(this.highlight.length);
+        return `<strong>${marked}</strong>${rest}`;
       } else {
         return `<span>${this.vm.label}</span>`;
       }
     },
     hasHighlight() {
-      return this.highlight && this.vm.label.indexOf(this.highlight) === 0;
+      return this.highlight && this.lowercaseValue.indexOf(this.highlight.toLowerCase()) === 0;
+    },
+    lowercaseValue() {
+      return this.vm.label.toLowerCase();
     }
   },
   methods: {

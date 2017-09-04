@@ -44,7 +44,7 @@ Vue.component('app', {
 
   computed: {
     someHighlight() {
-      return this.currentInput && this.currentTags.some( tag => tag.label.indexOf(this.currentInput) === 0);
+      return this.currentInput && this.currentTags.some( tag => tag.label.toLowerCase().indexOf(this.currentInput) === 0);
     },
 
     currentSearch() {
@@ -107,9 +107,10 @@ Vue.component('app', {
     },
 
     sortTags(value) {
+      value = value && value.toLowerCase();
       this.currentTags = this.tagButtons.slice().sort( (a, b) => {
-        const labelA = a.label;
-        const labelB = b.label;
+        const labelA = a.label.toLowerCase();
+        const labelB = b.label.toLowerCase();
 
         if (labelA.indexOf(value) === 0) {
           if (labelB.indexOf(value) === 0) {
