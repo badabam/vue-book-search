@@ -10,6 +10,7 @@
   padding: 10px;
   opacity: 0.1;
   transition: opacity 0.3s ease;
+  animation: hide 2s ease;
 
   &:hover {
     opacity: 1;
@@ -17,4 +18,11 @@
 
   li:before { content: '„'; }
   li:after { content: '“'; }
+}
+
+
+@keyframes hide {
+  from {opacity: 1;}
+  50% {opacity: 1}
+  to {opacity: 0.1;}
 }

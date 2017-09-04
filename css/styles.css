@@ -592,10 +592,19 @@ sup {
   margin: auto;
   padding: 10px;
   opacity: 0.1;
-  transition: opacity 0.3s ease; }
+  transition: opacity 0.3s ease;
+  animation: hide 2s ease; }
   .app-tasks:hover {
     opacity: 1; }
   .app-tasks li:before {
     content: '„'; }
   .app-tasks li:after {
     content: '“'; }
+
+@keyframes hide {
+  from {
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  to {
+    opacity: 0.1; } }
