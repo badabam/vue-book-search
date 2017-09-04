@@ -66,13 +66,7 @@ Vue.component('app', {
     ...Vuex.mapMutations(['increment']),
     ...Vuex.mapActions(['lateIncrement']),
     createSearchTag(data) {
-      let currentTag;
-      if (this.selectedTagIndex != null) {
-        try {
-          currentTag = this.currentTags[this.selectedTagIndex];
-        } catch(error) { }
-      }
-
+      const currentTag = this.getCurrentTag();
       const newTag = Object.assign({}, currentTag ? currentTag : data, {
         value: currentTag ? null : data.value,
         id: this.nextSearchTodoId++
@@ -83,8 +77,24 @@ Vue.component('app', {
       this.currentHint = currentTag ? currentTag.hint : data.hint;
     },
 
+    getCurrentTag() {
+      if (this.selectedTagIndex != null) {
+        try {
+          return this.currentTags[this.selectedTagIndex];
+        } catch(error) {
+          console.log('getCurrentTag: no currentTag found for index', this.selectedSearchTagIndex);
+          return;
+        }
+      }
+    },
+
     click(data) {
+      this.removeEmptySearchTags();
       this.createSearchTag(data);
+    },
+
+    removeEmptySearchTags() {
+      Object.values(this.searchTags).forEach(tag => tag.value || this.destroySearchTag(tag.id));
     },
 
     enter() {
@@ -156,7 +166,6 @@ Vue.component('app', {
     },
 
     destroySearchTag(id) {
-      console.log('destroy', id, this.searchTags[id]);
       Vue.delete(this.searchTags, id);
       this.currentHint = '';
     },

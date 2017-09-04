@@ -68,7 +68,6 @@ Vue.component('search-tag', {
 
     rawValue() {
       const raw = this.value ? this.value.replace(/[€=<>]\s?/gi, '') : '';
-      console.log('raw', raw);
       return raw;
     }
   },
@@ -77,7 +76,6 @@ Vue.component('search-tag', {
     setTimeout: setTimeout.bind(null),
 
     submit(value) {
-      console.log('submit', value);
       if (this.hasError || !this.editing) {
         return false; // early out
       }
@@ -110,7 +108,6 @@ Vue.component('search-tag', {
     },
 
     suggestionsClick(value) {
-      console.log('suggestionsClick', value);
       this.editing = false;
       this.stopEditing(value);
     },
@@ -165,14 +162,12 @@ Vue.component('search-tag', {
     blur(event) {
       const suggestions = this.$refs && this.$refs.suggestions;
       this.value = (this.values && suggestions) ? (suggestions.currentItem || event.target.value) : event.target.value;
-      console.log('search-tag:blur', !this.rawValue, `|${this.value}|`);
       this.afterBlur(event);
-      // setTimeout(() => this.afterBlur(event), 100);
     },
 
     afterBlur(event) {
       if (!this.rawValue) {
-        this.destroy();
+        this.destroy(true);
         console.log('afterBlur:destroy', this.id, this.value);
       } else {
         console.log('afterBlur:submit', this.id, this.value);
