@@ -1,7 +1,6 @@
 Vue.component('app', {
   template: `
   <div>
-    <div @click="$store.commit('increment')" @mouseover="$store.dispatch('lateIncrement')">{{count}}|{{tenCount}}</div>
     <hintbar v-if="currentHint" v-bind:text="currentHint"/>
     <search-bar
       @submit="createSearchTag"
