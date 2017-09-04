@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *::before,
 *::after {
@@ -579,3 +580,22 @@ sup {
   .tag-button.low {
     background: #efefef;
     color: #999; }
+
+.app-tasks {
+  background: lightyellow;
+  font-size: 14px;
+  width: 80%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  margin: auto;
+  padding: 10px;
+  opacity: 0.1;
+  transition: opacity 0.3s ease; }
+  .app-tasks:hover {
+    opacity: 1; }
+  .app-tasks li:before {
+    content: '„'; }
+  .app-tasks li:after {
+    content: '“'; }
