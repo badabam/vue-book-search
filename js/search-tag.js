@@ -141,7 +141,9 @@ Vue.component('search-tag', {
     },
 
     checkMulti(event) {
-      if ( ([',', '+'].indexOf(event.key) !== -1) && this.multi) {
+      const suggestions = this.$refs && this.$refs.suggestions;
+      if ( ([',', '+'].indexOf(event.key) !== -1 && this.multi)
+          || [' '].indexOf(event.key) === 0 && suggestions) {
         event.stopImmediatePropagation();
         event.preventDefault();
         const val = event.target.value ? event.target.value.split(',')[0] : null;

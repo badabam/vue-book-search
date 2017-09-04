@@ -186,7 +186,7 @@ const locale = (function() {
           hint: 'Nur Zahlenwerte sind erlaubt.'
         },
         {
-          label: 'Stichwort',
+          label: 'Schlagwort',
           type: 'text',
           placeholder: 'Kochen',
           multi: true,
