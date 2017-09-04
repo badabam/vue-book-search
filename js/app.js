@@ -43,8 +43,6 @@ Vue.component('app', {
   },
 
   computed: {
-    ...Vuex.mapState(['count']),
-    ...Vuex.mapGetters(['tenCount']),
     someHighlight() {
       return this.currentInput && this.currentTags.some( tag => tag.label.indexOf(this.currentInput) === 0);
     },
@@ -63,8 +61,6 @@ Vue.component('app', {
   },
 
   methods: {
-    ...Vuex.mapMutations(['increment']),
-    ...Vuex.mapActions(['lateIncrement']),
     createSearchTag(data) {
       const currentTag = this.getCurrentTag();
       const newTag = Object.assign({}, currentTag ? currentTag : data, {

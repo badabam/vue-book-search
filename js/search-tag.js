@@ -163,14 +163,9 @@ Vue.component('search-tag', {
       const suggestions = this.$refs && this.$refs.suggestions;
       this.value = (this.values && suggestions) ? (suggestions.currentItem || event.target.value) : event.target.value;
       this.afterBlur(event);
-    },
-
-    afterBlur(event) {
       if (!this.rawValue) {
         this.destroy(true);
-        console.log('afterBlur:destroy', this.id, this.value);
       } else {
-        console.log('afterBlur:submit', this.id, this.value);
         setTimeout(() => this.submit(this.value), 100);
       }
     },
