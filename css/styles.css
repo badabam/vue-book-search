@@ -484,9 +484,11 @@ sup {
   .search-tag .suffix {
     margin-left: 10px;
     font-weight: normal;
-    cursor: pointer; }
+    cursor: pointer;
+    transition: all 0.2s ease; }
     .search-tag .suffix:hover {
-      text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4); }
+      color: red;
+      transform: scale(1.5); }
   .search-tag:empty {
     flex-shrink: 0; }
     .search-tag:empty:after {
