@@ -6,6 +6,8 @@
   padding: 5px;
   display: flex;
   justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
 
   .logo {
     height: 100%;

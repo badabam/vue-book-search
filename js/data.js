@@ -132,10 +132,9 @@ const locale = (function() {
         },
         instructions: {
           htmlText: `
-          Auswahl mit Tab (<code>⇥</code>) oder Pfeiltasten (<code>←</code>, <code><div turned>←</div></code>).<br>
-          Mit <code>↵</code> Suchbegriff erzeugen.<br>
-          Schreibe <cite>"Pr"</cite> und drücke <code>⇥</code>, um Kategorie zu wählen.<br>
-          Lösche Einträge mit <code>⌫</code>.
+          Mit <code>⇥</code> und <code>←</code><code><div turned>←</div></code> ohne Maus navigieren<br>
+          Suchbegriff erzeugen mit <code>↵</code><br>
+          Für "Preis" nur "pr" schreiben und mit<br> <code>⇥</code> und <code>↵</code> einfügen<br>
           `
         }
       },
@@ -190,7 +189,7 @@ const locale = (function() {
           type: 'text',
           placeholder: 'Kochen',
           multi: true,
-          hint: 'Weiterer Eintrag mit <code>,</code> or <code>+</code>'
+          hint: 'Weiterer Eintrag mit <code>,</code> oder <code>+</code>'
         },
         {
           label: 'Sprache',

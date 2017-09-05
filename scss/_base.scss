@@ -16,17 +16,23 @@ body {
   letter-spacing: 0.6px;
   line-height: 1.5;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
 }
 
 main {
-  height: 100%;
-  margin: 20px;
   background-color: $white;
+  width: calc(100% - 40px);
   box-shadow: 1px 1px 6px rgba(black, 0.2);
   border-radius: 2px;
   overflow: auto;
   display: flex;
   flex-direction: column;
+  margin: 20px 0 auto;
+  flex-shrink: 0;
 }
 
 input[type=number]::-webkit-outer-spin-button,
