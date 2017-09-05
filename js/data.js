@@ -5,6 +5,11 @@ const locale = (function() {
   switch (lang) {
     case 'en': return {
         i18n: {
+          header: {
+            bibliography: 'Bibliography',
+            cart: 'Shopping carts',
+            name: 'Carol'
+          },
           searching: {
             heading: '<h3>Searching for</h3>'
           },
@@ -22,7 +27,7 @@ const locale = (function() {
             Try writing <code>Pr</code>, then use <code>⇥</code> to select.<br>
             Delete a tag with <code>⌫</code>.<br>
             `
-          }
+          },
         },
         tagButtons: [
           {
@@ -120,6 +125,11 @@ const locale = (function() {
       };
     case 'de': return {
       i18n: {
+        header: {
+          bibliography: 'Bibliografie',
+          cart: 'Warenkörbe',
+          name: 'Dörte'
+        },
         searching: {
           heading: '<h3>Suche nach</h3>'
         },
@@ -136,6 +146,16 @@ const locale = (function() {
           Suchbegriff erzeugen mit <code>↵</code><br>
           Für "Preis" nur "pr" schreiben und mit<br> <code>⇥</code> und <code>↵</code> einfügen<br>
           `
+        },
+        tasks: {
+          button: 'Suchbeispiele anzeigen',
+          headline: 'Mögliche Suchanfragen:',
+          tasks: [
+            'Ich suche ein Buch von "Richard David Precht". Irgendwas mit "Liebe".',
+            'Haben Sie etwas zum Thema "Kartenkunst" oder "Spielkarten"?',
+            'Ich suche eine besonders schöne Bibel auf französisch oder italienisch als Geschenk. Mindestens 200 Euro wert.',
+            'Ich suche die "Herr der Ringe" BluRay Special Edition. Ist letztes Jahr erst erschienen.'
+          ]
         }
       },
       tagButtons: [

@@ -23,13 +23,13 @@ Vue.component('app', {
         v-bind:doFilter="someHighlight"
         v-bind:key="data.label" />
     </section>
-    <section class="searching" v-if="searching && Object.keys(searchTags).length" v-html="i18n.searching.heading + currentSearch"></section>
+    <section class="searching" v-if="searching && Object.keys(searchTags).length" v-html="i18n.heading + currentSearch"></section>
   </div>
   `,
 
   data() {
     return {
-      i18n: i18n,
+      i18n: i18n.searching,
       currentTags: tagButtons,
       tagButtons: tagButtons,
       currentInput: '',
